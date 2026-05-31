@@ -8,9 +8,15 @@ import sivakumarImg from '../assets/sivakumar.jpeg';
 export default function Psychiatry() {
   return (
     <main className="psychiatry-theme">
-      <section className="sp-hero">
-        <div className="sp-hero-orb"></div>
-        <div className="container sp-hero-inner">
+      <section className="sp-hero" style={{ position: 'relative' }}>
+        <img
+          src="https://lh3.googleusercontent.com/d/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi=w1600"
+          alt=""
+          aria-hidden="true"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.28, zIndex: 0 }}
+        />
+        <div className="sp-hero-orb" style={{ zIndex: 1 }}></div>
+        <div className="container sp-hero-inner" style={{ position: 'relative', zIndex: 1 }}>
           <div className="sp-hero-pill"><Brain /> Mental Peace</div>
           <h1>Compassionate <span>Psychiatry</span><br/>&amp; Counseling</h1>
           <p className="sp-hero-sub">A safe, confidential space for your mental wellness. Overcome anxiety, manage stress, and find balance with our empathetic specialists.</p>

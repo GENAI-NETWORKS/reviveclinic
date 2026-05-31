@@ -1450,7 +1450,7 @@ img {
 }
 /* --- ABOUT PAGE --- */
 .about-hero {
-  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.95)), url('https://drive.google.com/thumbnail?id=1TLa_Gi3OBzDlbV36VP9-jgwpjFDBy0RH&sz=w2000') center/cover no-repeat;
+  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.95)), url('https://lh3.googleusercontent.com/d/16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC=w1920-h1080') center/cover no-repeat;
   padding: 160px 20px 80px;
   text-align: center;
   position: relative;
@@ -1600,6 +1600,10 @@ img {
   inset: 0;
   background: url('./assets/dermatology.jpg') center/cover no-repeat;
   opacity: 0.18;
+}
+/* Psychiatry hero uses a real REVIVE clinic image — hide the ::before stock image */
+.psychiatry-theme .sp-hero::before {
+  display: none;
 }
 .sp-hero-orb {
   position: absolute;

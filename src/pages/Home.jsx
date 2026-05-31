@@ -17,6 +17,12 @@ import blogHairImg from '../assets/blog_hair.jpg';
 import blogMindImg from '../assets/blog_mind.jpg';
 import assessmentBgImg from '../assets/assessment-bg.jpg';
 
+// Drive image URLs for assessment section
+const ASSESSMENT_BG = 'https://lh3.googleusercontent.com/d/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF=w1920';
+const DERMATOLOGY_IMG = 'https://lh3.googleusercontent.com/d/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja=w1200';
+const TRICHOLOGY_IMG = 'https://lh3.googleusercontent.com/d/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD=w800';
+const COUNSELING_IMG = 'https://lh3.googleusercontent.com/d/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi=w1000';
+
 const DEFAULT_BLOG_POSTS = [
   {
     id: "skincare-routine",
@@ -136,7 +142,7 @@ export default function Home() {
       {/* HERO */}
       <section id="hero">
         <div className="hero-overlay"></div>
-        <img src={heroImg} alt="REVIVE Clinic interior" className="hero-img" />
+        <img src="https://lh3.googleusercontent.com/d/16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC=w1920-h1080" alt="REVIVE Clinic interior" className="hero-img" />
         <div className="hero-content">
           <div className="hero-badge">4.9 Stars · Trusted by 1100+ patients</div>
           <h1 className="hero-tagline">Revive Your Radiance &amp; Peace</h1>
@@ -211,7 +217,7 @@ export default function Home() {
       <section id="about" className="section about-section">
         <div className="container about-grid">
           <div className="about-visual">
-            <img src={aboutImg} alt="REVIVE Clinic caring doctor" className="about-img" />
+            <img src="https://lh3.googleusercontent.com/d/1PgMsWg-jw6Rix5qj9M8NvrLXGF-AUP93=w1200" alt="REVIVE Clinic caring doctor" className="about-img" />
             <div className="about-card-stack">
               <div className="about-card-bg"></div>
               <div className="about-card-main">
@@ -301,7 +307,7 @@ export default function Home() {
         <div className="container">
           <div 
             className="assessment-container reveal"
-            style={{ background: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${assessmentBgImg}) center/cover no-repeat` }}
+            style={{ background: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${ASSESSMENT_BG}) center/cover no-repeat` }}
           >
             <div className="assessment-text">
               <p className="section-eyebrow">Personalized Guide</p>
@@ -315,7 +321,7 @@ export default function Home() {
             </div>
             <div 
               className={`assessment-result ${assessment ? 'has-bg' : ''}`} 
-              style={{ backgroundImage: assessment === 'dermatology' ? `url(${dermatologyImg})` : assessment === 'trichology' ? `url(${trichologyImg})` : assessment === 'psychiatry' ? `url(${counselingImg})` : 'none' }}
+              style={{ backgroundImage: assessment === 'dermatology' ? `url(${DERMATOLOGY_IMG})` : assessment === 'trichology' ? `url(${TRICHOLOGY_IMG})` : assessment === 'psychiatry' ? `url(${COUNSELING_IMG})` : 'none' }}
             >
               {!assessment && (
                 <div className="result-placeholder">
