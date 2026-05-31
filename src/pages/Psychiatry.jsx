@@ -19,7 +19,7 @@ export default function Psychiatry() {
         <div className="container sp-hero-inner" style={{ position: 'relative', zIndex: 1 }}>
           <div className="sp-hero-pill"><Brain /> Mental Peace</div>
           <h1>Compassionate <span>Psychiatry</span><br/>&amp; Counseling</h1>
-          <p className="sp-hero-sub">A safe, confidential space for your mental wellness. Overcome anxiety, manage stress, and find balance with our empathetic specialists.</p>
+          <p className="sp-hero-sub">A safe, confidential space for your mental health. Overcome anxiety, manage stress, and find balance with our empathetic specialists.</p>
           <div className="sp-hero-stats">
             <div className="sp-stat"><strong>5+</strong><span>Therapy Types</span></div>
             <div className="sp-stat"><strong>100%</strong><span>Confidential</span></div>
@@ -41,13 +41,13 @@ export default function Psychiatry() {
       <div className="container">
         <div className="sp-top-layout">
           <div className="sp-content-top">
-          <div className="sp-section-label"><h2>About Our Mental Wellness Service</h2></div>
+          <div className="sp-section-label"><h2>About Our Mental Health Service</h2></div>
           
           <div className="doctor-profile-split">
             <div className="doctor-profile-text">
               <h3 style={{ marginTop: '-8px' }}>Dr. P.T. Sivakumar</h3>
               <div className="dp-specialty">Consultant Psychiatrist</div>
-              <p style={{ textAlign: 'justify' }}>True wellness encompasses the mind just as much as the body. At REVIVE Clinic, our empathetic psychiatry and counseling team is dedicated to providing a non-judgmental, strictly confidential environment where you can explore your thoughts and overcome mental health challenges.</p>
+              <p style={{ textAlign: 'justify' }}>True health encompasses the mind just as much as the body. At REVIVE Clinic, our empathetic psychiatry and counseling team is dedicated to providing a non-judgmental, strictly confidential environment where you can explore your thoughts and overcome mental health challenges.</p>
               <p style={{ textAlign: 'justify' }}>Dr. P.T. Sivakumar (MBBS, MD - CMC Vellore) is a compassionate and highly experienced Consultant Psychiatrist dedicated to holistic mental health care. Trained at one of India's premier medical institutions, he specializes in the diagnosis, treatment, and ongoing management of a wide variety of psychiatric conditions, including anxiety, depression, and stress-related disorders.</p>
               <p style={{ textAlign: 'justify' }}>Believing strongly in patient-centric care, Dr. Sivakumar combines precise medical interventions with empathetic counseling, empowering patients to regain control of their mental well-being and live fulfilling lives.</p>
               <p style={{ textAlign: 'justify' }}>His approach is deeply rooted in the belief that mental health is a collaborative journey. He works closely with each individual to demystify psychological conditions, breaking down the stigma associated with seeking help.</p>
@@ -100,7 +100,7 @@ export default function Psychiatry() {
         </div>
 
         <div className="process-section">
-          <div className="sp-section-label"><h2>Your Path to Wellness</h2></div>
+          <div className="sp-section-label"><h2>Your Path to Recovery</h2></div>
           <div className="process-step">
             <div className="step-num">1</div>
             <div>
@@ -134,7 +134,7 @@ export default function Psychiatry() {
         <div className="bottom-widgets-grid">
           <div className="sw-book sidebar-widget">
             <h3>Book a Session</h3>
-            <p>Take the first step towards mental peace. Our scheduling is strictly confidential.</p>
+            <p>Take the first step towards mental clarity. Our scheduling is strictly confidential.</p>
             <a href="/#contact" className="btn-white"><Calendar /> Book Now</a>
           </div>
 

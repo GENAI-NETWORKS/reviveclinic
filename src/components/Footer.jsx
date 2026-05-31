@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import { Sparkles, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
+import logoImg from '../assets/logo.jpeg';
 
 export default function Footer() {
   return (
     <footer id="footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <div className="footer-logo" style={{ display: 'flex', alignItems: 'center' }}>
-            <Sparkles style={{ width: '24px', height: '24px', marginRight: '8px', color: 'var(--primary)' }} />
-            REVIVE
+          <div className="footer-logo">
+            <img src={logoImg} alt="REVIVE Clinic Logo" className="footer-logo-img" />
+            <span>REVIVE</span>
           </div>
           <p className="footer-tagline">Holistic Care for Your Skin, Hair &amp; Mind</p>
           <p className="footer-addr">First Floor, S.S. Complex, Trichy Main Road,<br />Seelanaickenpatti, Salem, Tamil Nadu</p>

@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Heart, Microscope, ShieldCheck, User, Brain, ArrowRight, Calendar, 
-  MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Scissors
+  MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Scissors, ChevronDown, ChevronUp
 } from 'lucide-react';
 
-import heroImg from '../assets/hero.png';
 import sivaImg from '../assets/sivakumar.jpeg';
 import yogeswariImg from '../assets/Yogeswari Subramanian.jpeg';
-import aboutImg from '../assets/about.jpg';
 import dermatologyImg from '../assets/dermatology.jpg';
 import trichologyImg from '../assets/trichology.jpg';
 import counselingImg from '../assets/counseling.jpg';
@@ -81,6 +79,82 @@ export default function Home() {
   const [assessment, setAssessment] = useState(null);
   const [formSuccess, setFormSuccess] = useState(false);
   const [displayPosts, setDisplayPosts] = useState(DEFAULT_BLOG_POSTS);
+  const [expandedService, setExpandedService] = useState(null);
+  const [activeTab, setActiveTab] = useState('skin'); // 'skin' or 'mind'
+
+  const toggleService = (key) => setExpandedService(prev => prev === key ? null : key);
+
+  const SERVICES = [
+    {
+      key: 'acne',
+      title: 'Acne & Scar Management',
+      category: 'Dermatology',
+      img: 'https://lh3.googleusercontent.com/d/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja=w600',
+      detail: 'Advanced chemical peels, laser therapy, and personalized topical regimens to clear acne and resurface skin for a flawless complexion.',
+    },
+    {
+      key: 'pigmentation',
+      title: 'Pigmentation & Glow',
+      category: 'Dermatology',
+      img: 'https://lh3.googleusercontent.com/d/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD=w600',
+      detail: 'Targeted Q-switch laser sessions and customized peels to treat melasma, sunspots, and uneven tone for a radiant complexion.',
+    },
+    {
+      key: 'chemical-peel',
+      title: 'Chemical Peels & Lasers',
+      category: 'Dermatology',
+      img: 'https://lh3.googleusercontent.com/d/1WWoGa3_PXSIsuzYZh-41CYSvwaLopxkb=w600',
+      detail: 'Medical-grade chemical exfoliation and laser resurfacing for deep skin renewal, pore reduction, and texture improvement.',
+    },
+    {
+      key: 'allergy',
+      title: 'Skin Allergy & Infections',
+      category: 'Dermatology',
+      img: 'https://lh3.googleusercontent.com/d/1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i=w600',
+      detail: 'Comprehensive patch testing, allergy management, and targeted antimicrobial therapies for all skin infections and reactions.',
+    },
+    {
+      key: 'hairfall',
+      title: 'Hair Fall & Alopecia',
+      category: 'Hair Care',
+      img: 'https://lh3.googleusercontent.com/d/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi=w600',
+      detail: 'Advanced dermoscopy analysis to identify the root cause of hair fall whether Telogen Effluvium or progressive alopecia with a personalized treatment plan.',
+    },
+    {
+      key: 'prp',
+      title: 'PRP Hair Therapy',
+      category: 'Hair Care',
+      img: 'https://lh3.googleusercontent.com/d/19ipRdJ70CWRqphVNz5BEdahPp_r9-vxL=w600',
+      detail: 'Platelet-Rich Plasma injections using your own growth factors to stimulate dormant follicles and increase hair thickness significantly.',
+    },
+    {
+      key: 'anxiety',
+      title: 'Anxiety & Stress',
+      category: 'Psychiatry',
+      img: 'https://lh3.googleusercontent.com/d/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF=w600',
+      detail: 'Evidence-based therapies, including CBT, to help identify triggers, manage panic attacks, and build emotional resilience.',
+    },
+    {
+      key: 'depression',
+      title: 'Depression & Mood',
+      category: 'Psychiatry',
+      img: 'https://lh3.googleusercontent.com/d/1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo=w600',
+      detail: 'Comprehensive support through pharmacological management and deep talk therapy to treat clinical depression and mood imbalances safely.',
+    },
+    {
+      key: 'sleep',
+      title: 'Sleep & Insomnia',
+      category: 'Psychiatry',
+      img: 'https://lh3.googleusercontent.com/d/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4=w600',
+      detail: 'Diagnosis and treatment of sleep disorders linked to psychological stress, with targeted sleep hygiene protocols.',
+    },
+  ];
+
+  const CATEGORY_COLORS = {
+    'Dermatology': { bg: '#e6f6f4', color: 'var(--primary)' },
+    'Hair Care': { bg: '#fef3e2', color: '#c2700f' },
+    'Psychiatry': { bg: '#eef2ff', color: '#4338ca' },
+  };
 
   useEffect(() => {
     try {
@@ -146,10 +220,10 @@ export default function Home() {
         <div className="hero-content">
           <div className="hero-badge">4.9 Stars · Trusted by 1100+ patients</div>
           <h1 className="hero-tagline">Revive Your Radiance &amp; Peace</h1>
-          <p className="hero-sub">Expert Dermatology &amp; Hair Care · Psychiatry &amp; Counseling<br />Salem's most trusted integrative wellness clinic.</p>
+          <p className="hero-sub">Expert Dermatology &amp; Hair Care · Psychiatry &amp; Counseling<br />Salem's most trusted skin &amp; mind clinic.</p>
           <div className="hero-actions">
-            <Link to="/service-dermatology" className="btn-ghost" id="heroBookBtn">Dermatology</Link>
-            <Link to="/service-psychiatry" className="btn-ghost">Psychiatry &amp; Counseling</Link>
+            <Link to="/service-dermatology" className="btn-ghost">Consult for Skin & Hair</Link>
+            <Link to="/service-psychiatry" className="btn-ghost">Consult for Mind</Link>
           </div>
         </div>
       </section>
@@ -169,46 +243,58 @@ export default function Home() {
       <section id="services" className="section">
         <div className="container">
           <div className="section-header">
-            <p className="section-eyebrow">What We Offer</p>
-            <h2>Two Pillars of Care</h2>
-            <p className="section-desc">At REVIVE, we treat you as a whole. Our integrative care brings together expert dermatology for skin and hair with compassionate psychiatry for mental wellness.</p>
+            <p className="section-eyebrow">Our Specialties</p>
+            <h2>Comprehensive Care</h2>
+            <p className="section-desc">At REVIVE, we balance your physical appearance with your mental well-being. Choose a specialty below to explore our services.</p>
           </div>
-          <div className="services-grid">
-            <div className="service-card service-card--horizontal" id="card-mind" style={{ position: 'relative', overflow: 'visible' }}>
-              <div style={{ position: 'absolute', top: '-14px', right: '24px', background: '#eef2ff', color: '#4338ca', padding: '6px 16px', borderRadius: '50px', fontSize: '0.8rem', fontWeight: '700', zIndex: 10, boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>Psychiatry &amp; Counseling</div>
-              <div className="service-img-wrap">
-                <img src={sivaImg} alt="Dr. P.T. Sivakumar" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
-                <div className="service-img-badge">Mind</div>
-              </div>
-              <div className="service-body">
-                <div className="service-icon service-icon--mind"><Brain /></div>
-                <h3 style={{ marginBottom: '4px', minHeight: '56px' }}>Dr. P.T.<br/>Sivakumar</h3>
-                <p style={{ color: 'var(--primary)', fontWeight: '700', marginBottom: '16px', fontSize: '1.05rem' }}>Consultant Psychiatrist</p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '0' }}><strong>Qualifications:</strong><br/>MBBS, MD ( CMC - Vellore)</p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: '12px', marginBottom: '0', lineHeight: '1.6' }}>Expert in treating anxiety, depression, and stress-related disorders with a holistic, collaborative approach.</p>
-                <div style={{ marginTop: 'auto', paddingTop: '24px', display: 'flex', justifyContent: 'flex-start' }}>
-                  <Link to="/service-psychiatry" className="service-learn-more" style={{ width: 'fit-content', padding: '10px 20px' }}>View Psychiatry Services</Link>
-                </div>
-              </div>
-            </div>
 
-            <div className="service-card service-card--horizontal" id="card-derma" style={{ position: 'relative', overflow: 'visible' }}>
-              <div style={{ position: 'absolute', top: '-14px', right: '24px', background: '#e6f6f4', color: 'var(--primary)', padding: '6px 16px', borderRadius: '50px', fontSize: '0.8rem', fontWeight: '700', zIndex: 10, boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>Dermatology</div>
-              <div className="service-img-wrap">
-                <img src={yogeswariImg} alt="Dr. Yogeswari Subramanian" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} />
-                <div className="service-img-badge">Skin &amp; Hair</div>
-              </div>
-              <div className="service-body">
-                <div className="service-icon service-icon--skin"><User /></div>
-                <h3 style={{ marginBottom: '4px', minHeight: '56px' }}>Dr. Yogeswari<br/>Subramanian</h3>
-                <p style={{ color: 'var(--primary)', fontWeight: '700', marginBottom: '16px', fontSize: '1.05rem' }}>Board certified Dermatologist</p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '0' }}><strong>Qualifications:</strong><br/>MBBS, MD, DNB ( DVL )</p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: '12px', marginBottom: '0', lineHeight: '1.6' }}>Specializing in advanced acne management, scar revision, pigmentation treatments, and hair restoration.</p>
-                <div style={{ marginTop: 'auto', paddingTop: '24px', display: 'flex', justifyContent: 'flex-start' }}>
-                  <Link to="/service-dermatology" className="service-learn-more" style={{ width: 'fit-content', padding: '10px 20px' }}>View Dermatology Services</Link>
+          <div className="services-tabs">
+            <button 
+              className={`service-tab-btn ${activeTab === 'skin' ? 'active' : ''}`}
+              onClick={() => setActiveTab('skin')}
+            >
+              Skin &amp; Hair Care
+            </button>
+            <button 
+              className={`service-tab-btn ${activeTab === 'mind' ? 'active' : ''}`}
+              onClick={() => setActiveTab('mind')}
+            >
+              Mind &amp; Psychiatry
+            </button>
+          </div>
+
+          <div className="services-accordion">
+            {SERVICES.filter(svc => activeTab === 'skin' ? svc.category !== 'Psychiatry' : svc.category === 'Psychiatry').map(svc => {
+              const isOpen = expandedService === svc.key;
+              const colors = CATEGORY_COLORS[svc.category];
+              return (
+                <div key={svc.key} className={`svc-bar ${isOpen ? 'svc-bar--open' : ''}`}>
+                  <button className="svc-bar-header" onClick={() => toggleService(svc.key)} aria-expanded={isOpen}>
+                    <div className="svc-bar-left">
+                      <div className="svc-bar-thumb">
+                        <img src={svc.img} alt={svc.title} />
+                      </div>
+                      <div className="svc-bar-title">
+                        <span className="svc-bar-name">{svc.title}</span>
+                        <span className="svc-bar-cat" style={{ background: colors.bg, color: colors.color }}>{svc.category}</span>
+                      </div>
+                    </div>
+                    <div className="svc-bar-chevron">{isOpen ? <ChevronUp /> : <ChevronDown />}</div>
+                  </button>
+                  {isOpen && (
+                    <div className="svc-bar-detail">
+                      <div className="svc-bar-detail-img">
+                        <img src={svc.img} alt={svc.title} />
+                      </div>
+                      <div className="svc-bar-detail-text">
+                        <p>{svc.detail}</p>
+                        <Link to={svc.category === 'Psychiatry' ? '/service-psychiatry' : '/service-dermatology'} className="btn-primary" style={{ display: 'inline-block', marginTop: '16px', background: svc.category === 'Psychiatry' ? '#4338ca' : '#2a9d8f' }}>View All {svc.category} Services</Link>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -222,7 +308,7 @@ export default function Home() {
               <div className="about-card-bg"></div>
               <div className="about-card-main">
                 <div className="about-stat-pill">4.9 Stars Salem's Top Rated Clinic</div>
-                <p className="about-card-quote">"Your wellness journey deserves a team that sees all of you."</p>
+                <p className="about-card-quote">"Your health journey deserves a team that sees all of you."</p>
                 <div className="about-card-pills">
                   <span>Skin</span><span>Hair</span><span>Mind</span>
                 </div>
@@ -231,8 +317,10 @@ export default function Home() {
           </div>
           <div className="about-text">
             <p className="section-eyebrow">About Us</p>
-            <h2>Salem's Integrative Wellness Clinic</h2>
-            <p style={{ textAlign: 'justify' }}>REVIVE was founded with one belief: that true health is holistic. We bring together expert dermatology (for both skin and hair care) and compassionate psychiatry under one roof so you never have to choose between caring for your body and your mind.</p>
+            <h2>Salem's Trusted Skin &amp; Mind Clinic</h2>
+            <p style={{ textAlign: 'justify' }}>REVIVE was founded on a simple belief true healthcare lies in balancing science with practicality and real-life needs.</p>
+            <p style={{ textAlign: 'justify', marginTop: '12px' }}>We believe treatment should not just focus on a disease, but on the person as a whole. Every patient's concerns, lifestyle, and well-being matter.</p>
+            <p style={{ textAlign: 'justify', marginTop: '12px' }}>At REVIVE, we provide evidence-based dermatology and compassionate mental healthcare with personalized, high-quality care at the center of everything we do.</p>
             <div className="about-values">
               <div className="value-item">
                 <div className="value-icon-wrap"><Heart /></div>
@@ -270,36 +358,50 @@ export default function Home() {
             <div className="rating-display">
               <div className="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <span className="rating-num">4.9</span>
-              <span className="rating-count"> from 110+ Google reviews</span>
-            </div>
-          </div>
-          <div className="reviews-grid">
-            <div className="review-card">
-              <div className="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p className="review-text">"Dr. at REVIVE completely transformed my skin. I had struggled with acne for years and within 3 months I saw results I never thought possible. The clinic is clean, modern, and everyone is so kind."</p>
-              <div className="review-author">
-                <div className="review-avatar">P</div>
-                <div><strong>Priya S.</strong><span>Acne Treatment</span></div>
-              </div>
-            </div>
-            <div className="review-card">
-              <div className="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p className="review-text">"I was nervous about seeking mental health support, but REVIVE made me feel completely safe and heard. The counselor is incredibly empathetic and non-judgmental. Best decision I ever made."</p>
-              <div className="review-author">
-                <div className="review-avatar">A</div>
-                <div><strong>Arjun K.</strong><span>Counseling</span></div>
-              </div>
-            </div>
-            <div className="review-card">
-              <div className="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p className="review-text">"My hair fall stopped after just 2 months of treatment here. The trichologist did a thorough scalp analysis and the PRP sessions were very professional. Highly recommend to anyone dealing with hair issues."</p>
-              <div className="review-author">
-                <div className="review-avatar">M</div>
-                <div><strong>Meena R.</strong><span>Hair Fall & PRP</span></div>
-              </div>
+              <span className="rating-count"> from Google reviews</span>
             </div>
           </div>
         </div>
+
+        {/* Marquee wrapper - full width, no container */}
+        {(() => {
+          const reviews = [
+            { name: 'Navin Elango', initial: 'N', text: 'I consulted Dr. Sivakumar P.T for stress and sleep issues. He is very understanding and explains everything calmly. The consultation helped me a lot and I feel much better now. I strongly recommend him for mental health consultation.' },
+            { name: 'Kani Ram', initial: 'K', text: 'Very satisfied with the treatment. Underwent chemical peel in revive clinic, had a very good experience. The procedure was explained clearly, done carefully and recovery was smooth. Noticed visible improvement. Highly satisfied.' },
+            { name: 'Dhananjayan Thanigaivel', initial: 'D', text: 'I went for skin allergy treatment and got relief quickly. Dr. Yogeswari Subramanian is very knowledgeable and explains the condition clearly.' },
+            { name: 'Gayathri P', initial: 'G', text: 'Good consultation and treatment. Doctor was knowledgeable and supportive. Had a great change in skin and its too good. Overall a good place for skin care!' },
+            { name: 'Jeevika Sundaram', initial: 'J', text: 'Had a very reassuring experience here. Psychiatrist Dr Sivakumar listened patiently and was genuinely approachable. Felt comfortable and more confident after the consultation. Would definitely recommend for mental health care.' },
+            { name: 'Harini S', initial: 'H', text: 'Visited for a persistent skin issue and saw visible improvement within weeks. The doctor was honest, practical. Professional approach and effective treatment.' },
+            { name: 'Nishal K', initial: 'N', text: 'I consult the doctor newly and the dermatologist was so quite and the way she consulting the patient is so good.' },
+            { name: 'M. Keerthiga', initial: 'M', text: 'My experience was very nice. Mam explanation about treatment is suitable for my skin. I am suggesting the clinic for you.' },
+            { name: 'Srivarsha R', initial: 'S', text: 'I consulted Dr. Yogeshwari for my skin concerns. She was very patient, explained my condition clearly, and provided treatment that has now completely healed my issue. Her advice is genuine and truly helpful. I would definitely recommend her for skin and hair-related problems.' },
+            { name: 'Rogesh Rutravel', initial: 'R', text: 'For my baby diaper rash came. Paediatrician suggested one cream but it was not effective. So we went REVIVE skin clinic. Doctor Mam given some ointment. It cured my baby skin rash issue. Clinic is very neat & clean. Doctor with smiling face answered our all doubts politely. Thank you so much mam.' },
+            { name: 'Sinthiya Raj', initial: 'S', text: 'Wonderful clinic. Both the doctors are very polite in handling patients. We are very much satisfied with the treatment.' },
+            { name: 'John Prabhujot', initial: 'J', text: 'This is an excellent centre for all your skin care and mental health needs. Both Dr Yogeswari and Dr Sivakumar are approachable doctors. They listen to every complaint patiently and explain the treatment options very well. You will definitely be satisfied with their service.' },
+            { name: 'Gowtham Vickey', initial: 'G', text: 'I had a wonderful experience with Dr. Yogeswari Mam and Dr. Sivakumar Sir. Your care and treatment really made a difference. I truly felt comfortable and well taken care of. Feeling happy. Highly recommended.' },
+            { name: 'Pravin Kumar', initial: 'P', text: 'Dr. Shivakumar is a fantastic psychiatrist really listens, understands, and gives practical advice that actually helps. The whole process was smooth, and I felt genuinely supported. Highly recommend!' },
+            { name: 'Vinodhini Ravindran', initial: 'V', text: 'Doctor explains the treatment well. Very good treatment given. Best skin clinic. Fully satisfied results.' },
+            { name: 'Aravindbaskar M', initial: 'A', text: "Had a very great experience for my friend's skin problem. My friend consulted in revive clinic for his skin problem. Doctor spoke very politely and explained the problem. The skin problem started disappearing in 10 days. Medicines were also affordable." },
+          ];
+          const renderCard = (r, i) => (
+            <div className="review-card" key={i}>
+              <div className="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p className="review-text">&ldquo;{r.text}&rdquo;</p>
+              <div className="review-author">
+                <div className="review-avatar">{r.initial}</div>
+                <div><strong>{r.name}</strong><span>Google Review</span></div>
+              </div>
+            </div>
+          );
+          return (
+            <div className="reviews-marquee-outer">
+              <div className="reviews-marquee-track">
+                {reviews.map((r, i) => renderCard(r, i))}
+                {reviews.map((r, i) => renderCard(r, i + reviews.length))}
+              </div>
+            </div>
+          );
+        })()}
       </section>
 
       {/* ASSESSMENT TOOL */}
@@ -348,9 +450,9 @@ export default function Home() {
               {assessment === 'psychiatry' && (
                 <div className="result-card">
                   <Brain style={{ color: 'var(--teal-light)', width: '48px', height: '48px', margin: '0 auto 16px', display: 'block' }} />
-                  <h4>Mental Wellness</h4>
-                  <p>Our empathetic psychiatric and counseling team is here to support you. We provide a safe, confidential space for your mental peace.</p>
-                  <a href="#contact" className="btn-primary">Book Wellness Session</a>
+                  <h4>Psychiatry &amp; Counseling</h4>
+                  <p>Our empathetic psychiatric and counseling team is here to support you. We provide a safe, confidential space for your mental health.</p>
+                  <a href="#contact" className="btn-primary">Book a Consultation</a>
                 </div>
               )}
             </div>
@@ -362,9 +464,9 @@ export default function Home() {
       <section id="blog" className="section blog-section">
         <div className="container">
           <div className="section-header">
-            <p className="section-eyebrow">Wellness Journal</p>
-            <h2>Insights & Updates</h2>
-            <p className="section-desc">Stay informed with the latest tips, research, and holistic care advice from our expert dermatologists and psychiatrists.</p>
+            <p className="section-eyebrow">Health Journal</p>
+            <h2>Insights &amp; Updates</h2>
+            <p className="section-desc">Stay informed with the latest tips, research, and care advice from our expert dermatologists and psychiatrists.</p>
           </div>
           <div className="blog-grid">
             {displayPosts.map(post => (

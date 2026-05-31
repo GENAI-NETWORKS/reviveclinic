@@ -4,14 +4,15 @@ export default function About() {
       <section className="about-hero">
         <div className="container">
           <h1>Our <span>Facility</span> &amp; Story</h1>
-          <p className="about-hero-sub">Step into a space designed for tranquility. We blend expert dermatology with compassionate psychiatry in a serene, state-of-the-art environment curated for your comfort and wellness.</p>
+          <p className="about-hero-sub">Step into a space designed for healing. We bring together expert dermatology and compassionate psychiatry in a modern, comfortable environment built around your needs.</p>
         </div>
       </section>
 
       <section className="philosophy-section">
         <div className="philosophy-inner">
           <h2>A New Standard in Care</h2>
-          <p>At REVIVE, we understand that true wellness isn't strictly physical or purely mental - it is inextricably both. Our facility was architecturally designed to evoke a sense of calm from the moment you walk through the doors. Utilizing natural light, biophilic design elements, and private consultation suites, we ensure that your privacy and peace of mind are always prioritized.</p>
+          <p>REVIVE was founded on a simple belief true healthcare lies in balancing science with practicality and real-life needs. We believe treatment should not just focus on a disease, but on the person as a whole. Every patient's concerns, lifestyle, and well-being matter.</p>
+          <p style={{ marginTop: '16px' }}>At REVIVE, we provide evidence-based dermatology and compassionate mental healthcare, with personalized, high-quality care at the center of everything we do.</p>
         </div>
       </section>
 

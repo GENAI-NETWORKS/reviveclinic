@@ -144,7 +144,7 @@ export default function BlogPost() {
           <hr style={{ margin: '60px 0', border: 0, borderTop: '1px solid rgba(0,0,0,0.1)' }} />
           
           <div style={{ background: 'var(--bg-light)', padding: '32px', borderRadius: 'var(--radius)', textAlign: 'center' }}>
-            <h3>Ready to perfect your wellness ritual?</h3>
+            <h3>Ready to perfect your health routine?</h3>
             <p style={{ marginBottom: '24px', color: 'var(--text-muted)', textAlign: 'center' }}>Book a personalized consultation at REVIVE Clinic.</p>
             <Link to="/#contact" className="btn-primary" style={{ padding: '12px 28px', fontSize: '0.95rem' }}>Book Consultation</Link>
           </div>

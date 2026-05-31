@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sparkles, ChevronDown, User, Brain } from 'lucide-react';
+import { ChevronDown, User, Brain } from 'lucide-react';
+import logoImg from '../assets/logo.jpeg';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -43,9 +44,11 @@ export default function Navbar() {
       <nav id="navbar" className={`${scrolled ? 'scrolled' : ''} ${isLightPage ? 'navbar-light' : ''}`}>
         <div className="nav-inner">
           <Link to="/" className="logo" onClick={closeMenu}>
-            <span className="logo-icon"><Sparkles /></span>
-            <span className="logo-text">REVIVE</span>
-            <span className="logo-sub">Skin · Hair · Mind</span>
+            <img src={logoImg} alt="REVIVE Clinic Logo" className="logo-img" />
+            <div className="logo-text-group">
+              <span className="logo-text">REVIVE</span>
+              <span className="logo-sub">Skin · Hair · Mind</span>
+            </div>
           </Link>
           
           <button 
@@ -88,7 +91,7 @@ export default function Navbar() {
                   <span className="nav-dd-icon nav-dd-icon--mind"><Brain /></span>
                   <span>
                     <strong>Psychiatry &amp; Counseling</strong>
-                    <small>Mental Wellness</small>
+                    <small>Mental Health Support</small>
                   </span>
                 </Link>
               </div>
