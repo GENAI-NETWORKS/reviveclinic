@@ -53,7 +53,8 @@ const DEFAULT_BLOG_POSTS = [
 
 function getCleanImageUrl(inputUrl) {
   if (!inputUrl) return '';
-  if (typeof inputUrl !== 'string') return inputUrl; 
+  if (typeof inputUrl !== 'string') return inputUrl;
+  if (inputUrl.startsWith('data:')) return inputUrl;
   if (inputUrl.startsWith('/')) return inputUrl;
 
   if (inputUrl.includes('drive.google.com')) {

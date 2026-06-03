@@ -79,6 +79,7 @@ const DEFAULT_BLOG_POSTS = [
 
 function getCleanImageUrl(inputUrl) {
   if (!inputUrl) return { url: '', type: 'empty' };
+  if (inputUrl.startsWith('data:')) return { url: inputUrl, type: 'base64' };
   if (inputUrl.includes('drive.google.com')) {
     const driveRegex = /\/d\/([a-zA-Z0-9_-]+)/;
     const driveRegexId = /[?&]id=([a-zA-Z0-9_-]+)/;

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ExternalLink, LogOut, BookOpen, Brain, Search, PlusCircle, Edit3, Trash2, X } from 'lucide-react';
+import { Sparkles, ExternalLink, LogOut, BookOpen, Brain, Search, PlusCircle, Edit3, Trash2, X, Link2, Upload, Eye } from 'lucide-react';
 
 const DEFAULT_BLOG_POSTS = [
   {
@@ -40,6 +40,7 @@ const DEFAULT_BLOG_POSTS = [
 
 function getCleanImageUrl(inputUrl) {
   if (!inputUrl) return { url: '', type: 'empty' };
+  if (inputUrl.startsWith('data:')) return { url: inputUrl, type: 'base64' };
   if (inputUrl.includes('drive.google.com')) {
     const driveRegex = /\/d\/([a-zA-Z0-9_-]+)/;
     const driveRegexId = /[?&]id=([a-zA-Z0-9_-]+)/;
@@ -65,6 +66,8 @@ export default function Admin() {
   const [filter, setFilter] = useState('ALL');
   
   const [modalOpen, setModalOpen] = useState(false);
+  const [imageTab, setImageTab] = useState('url'); // 'url' | 'upload'
+  const fileInputRef = useRef(null);
   const [editData, setEditData] = useState({
     id: '', title: '', category: 'Dermatology & Hair Care', author: '', date: '', readTime: '4 min read', image: '', excerpt: '', content: ''
   });
@@ -139,13 +142,31 @@ export default function Admin() {
     localStorage.setItem('revive_blog_posts', JSON.stringify(newPosts));
   };
 
+  const handleImageFile = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const allowed = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+    if (!allowed.includes(file.type)) {
+      alert('Unsupported file type. Please upload a PNG, JPG, JPEG, WebP, or GIF image.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      setEditData(prev => ({ ...prev, image: ev.target.result }));
+    };
+    reader.readAsDataURL(file);
+  };
+
   const openCreateModal = () => {
     setEditData({ id: '', title: '', category: 'Dermatology & Hair Care', author: '', date: '', readTime: '4 min read', image: '', excerpt: '', content: '' });
+    setImageTab('url');
     setModalOpen(true);
   };
 
   const openEditModal = (post) => {
     setEditData(post);
+    // If image is a data URL (base64), default to upload tab visual, else url tab
+    setImageTab(post.image && post.image.startsWith('data:') ? 'upload' : 'url');
     setModalOpen(true);
   };
 
@@ -281,8 +302,16 @@ export default function Admin() {
                             <div>
                               <div className="td-title-text">{post.title}</div>
                               <div className="td-author-text">By {post.author} · {post.readTime || '3 min read'}</div>
-                              <div style={{marginTop: '4px', fontSize: '0.8rem'}}>
-                                <span style={{color: 'var(--primary-light)', wordBreak: 'break-all'}}>{post.image}</span>
+                              <div style={{marginTop: '4px', fontSize: '0.75rem'}}>
+                                {post.image && post.image.startsWith('data:') ? (
+                                  <span style={{color: '#4ade80', background: 'rgba(74,222,128,0.1)', padding: '2px 8px', borderRadius: '4px'}}>📁 Uploaded Image</span>
+                                ) : cleanImg.type === 'drive' ? (
+                                  <span style={{color: '#60a5fa', background: 'rgba(96,165,250,0.1)', padding: '2px 8px', borderRadius: '4px'}}>🔗 Drive Link</span>
+                                ) : cleanImg.type === 'webpage' ? (
+                                  <span style={{color: '#fbbf24', background: 'rgba(251,191,36,0.1)', padding: '2px 8px', borderRadius: '4px'}}>🌐 URL</span>
+                                ) : post.image ? (
+                                  <span style={{color: 'var(--text-muted)'}}>{post.image.length > 40 ? post.image.substring(0, 40) + '…' : post.image}</span>
+                                ) : null}
                               </div>
                             </div>
                           </div>
@@ -351,8 +380,87 @@ export default function Admin() {
               </div>
 
               <div className="form-group">
-                <label>Featured Image URL / Path</label>
-                <input type="text" className="form-control" placeholder="Paste image URL here..." value={editData.image} onChange={e => setEditData({...editData, image: e.target.value})} required />
+                <label>Featured Image</label>
+                {/* Tab switcher */}
+                <div className="img-tab-switcher">
+                  <button
+                    type="button"
+                    className={`img-tab-btn ${imageTab === 'url' ? 'active' : ''}`}
+                    onClick={() => setImageTab('url')}
+                  >
+                    <Link2 size={14} /> Paste URL / Drive Link
+                  </button>
+                  <button
+                    type="button"
+                    className={`img-tab-btn ${imageTab === 'upload' ? 'active' : ''}`}
+                    onClick={() => { setImageTab('upload'); setTimeout(() => fileInputRef.current?.click(), 80); }}
+                  >
+                    <Upload size={14} /> Upload Image File
+                  </button>
+                </div>
+
+                {imageTab === 'url' && (
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Paste image URL, Drive share link, or filename (e.g. blog_skin.jpg)"
+                    value={editData.image.startsWith('data:') ? '' : editData.image}
+                    onChange={e => setEditData({ ...editData, image: e.target.value })}
+                  />
+                )}
+
+                {imageTab === 'upload' && (
+                  <div
+                    className="img-upload-zone"
+                    onClick={() => fileInputRef.current?.click()}
+                    onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }}
+                    onDragLeave={e => e.currentTarget.classList.remove('drag-over')}
+                    onDrop={e => {
+                      e.preventDefault();
+                      e.currentTarget.classList.remove('drag-over');
+                      const file = e.dataTransfer.files[0];
+                      if (file) {
+                        const fakeEv = { target: { files: [file] } };
+                        handleImageFile(fakeEv);
+                      }
+                    }}
+                  >
+                    <Upload size={28} />
+                    <span>Click to browse or drag & drop</span>
+                    <small>PNG, JPG, JPEG, WebP, GIF supported</small>
+                  </div>
+                )}
+
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/png,image/jpeg,image/jpg,image/webp,image/gif"
+                  style={{ display: 'none' }}
+                  onChange={handleImageFile}
+                />
+
+                {/* Live preview */}
+                {editData.image && (() => {
+                  const clean = getCleanImageUrl(editData.image);
+                  const previewSrc = clean.type === 'webpage' ? null : clean.url;
+                  if (!previewSrc) return (
+                    <div className="img-preview-note"><Eye size={14} /> Cannot preview webpage link – it will display as a link icon.</div>
+                  );
+                  return (
+                    <div className="img-preview-wrap">
+                      <div className="img-preview-label"><Eye size={13} /> Preview</div>
+                      <img
+                        src={previewSrc}
+                        alt="Preview"
+                        className="img-preview-thumb"
+                        onError={e => { e.target.src = 'https://placehold.co/400x200/1e293b/ef4444?text=Image+Not+Found'; }}
+                      />
+                      {clean.type === 'drive' && (
+                        <div className="img-preview-badge">✓ Google Drive URL converted</div>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
 
               <div className="form-group">
