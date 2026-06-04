@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Heart, Microscope, ShieldCheck, User, Brain, ArrowRight, Calendar, 
-  MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Scissors, ChevronDown, ChevronUp
+import {
+  Heart, Microscope, ShieldCheck, User, Brain, ArrowRight, Calendar,
+  MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Scissors, ChevronDown, ChevronUp, Users, Star
 } from 'lucide-react';
 
 import sivaImg from '../assets/sivakumar.jpeg';
@@ -14,12 +14,27 @@ import blogSkinImg from '../assets/blog_skin.jpg';
 import blogHairImg from '../assets/blog_hair.jpg';
 import blogMindImg from '../assets/blog_mind.jpg';
 import assessmentBgImg from '../assets/assessment-bg.jpg';
+import img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w1920 from '../assets/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w1920.jpg';
+import img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200 from '../assets/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200.jpg';
+import img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800 from '../assets/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD_w800.jpg';
+import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000.jpg';
+import img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w600 from '../assets/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w600.jpg';
+import img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w600 from '../assets/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD_w600.jpg';
+import img_1WWoGa3_PXSIsuzYZh_41CYSvwaLopxkb_w600 from '../assets/1WWoGa3_PXSIsuzYZh-41CYSvwaLopxkb_w600.jpg';
+import img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600 from '../assets/1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600.jpg';
+import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600.jpg';
+import img_19ipRdJ70CWRqphVNz5BEdahPp_r9_vxL_w600 from '../assets/19ipRdJ70CWRqphVNz5BEdahPp_r9-vxL_w600.jpg';
+import img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600 from '../assets/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600.jpg';
+import img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600 from '../assets/1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600.jpg';
+import img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w600 from '../assets/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4_w600.jpg';
+import img_16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w1920_h1080 from '../assets/16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w1920-h1080.jpg';
+import img_1PgMsWg_jw6Rix5qj9M8NvrLXGF_AUP93_w1200 from '../assets/1PgMsWg-jw6Rix5qj9M8NvrLXGF-AUP93_w1200.jpg';
 
 // Drive image URLs for assessment section
-const ASSESSMENT_BG = 'https://lh3.googleusercontent.com/d/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF=w1920';
-const DERMATOLOGY_IMG = 'https://lh3.googleusercontent.com/d/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja=w1200';
-const TRICHOLOGY_IMG = 'https://lh3.googleusercontent.com/d/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD=w800';
-const COUNSELING_IMG = 'https://lh3.googleusercontent.com/d/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi=w1000';
+const ASSESSMENT_BG = img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w1920;
+const DERMATOLOGY_IMG = img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200;
+const TRICHOLOGY_IMG = img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800;
+const COUNSELING_IMG = img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000;
 
 const DEFAULT_BLOG_POSTS = [
   {
@@ -65,19 +80,20 @@ function getCleanImageUrl(inputUrl) {
       return `https://lh3.googleusercontent.com/d/${match[1]}`;
     }
   }
-  
+
   const isUrl = inputUrl.startsWith('http://') || inputUrl.startsWith('https://');
   if (isUrl) return inputUrl;
-  
+
   try {
     return new URL(`../assets/${inputUrl}`, import.meta.url).href;
-  } catch(e) {
+  } catch (e) {
     return inputUrl;
   }
 }
 
 export default function Home() {
   const [assessment, setAssessment] = useState(null);
+  const [showExperts, setShowExperts] = useState(false);
   const [formSuccess, setFormSuccess] = useState(false);
   const [displayPosts, setDisplayPosts] = useState(DEFAULT_BLOG_POSTS);
   const [expandedService, setExpandedService] = useState(null);
@@ -90,63 +106,63 @@ export default function Home() {
       key: 'acne',
       title: 'Acne & Scar Management',
       category: 'Dermatology',
-      img: 'https://lh3.googleusercontent.com/d/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja=w600',
+      img: img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w600,
       detail: 'Advanced chemical peels, laser therapy, and personalized topical regimens to clear acne and resurface skin for a flawless complexion.',
     },
     {
       key: 'pigmentation',
       title: 'Pigmentation & Glow',
       category: 'Dermatology',
-      img: 'https://lh3.googleusercontent.com/d/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD=w600',
+      img: img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w600,
       detail: 'Targeted Q-switch laser sessions and customized peels to treat melasma, sunspots, and uneven tone for a radiant complexion.',
     },
     {
       key: 'chemical-peel',
       title: 'Chemical Peels & Lasers',
       category: 'Dermatology',
-      img: 'https://lh3.googleusercontent.com/d/1WWoGa3_PXSIsuzYZh-41CYSvwaLopxkb=w600',
+      img: img_1WWoGa3_PXSIsuzYZh_41CYSvwaLopxkb_w600,
       detail: 'Medical-grade chemical exfoliation and laser resurfacing for deep skin renewal, pore reduction, and texture improvement.',
     },
     {
       key: 'allergy',
       title: 'Skin Allergy & Infections',
       category: 'Dermatology',
-      img: 'https://lh3.googleusercontent.com/d/1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i=w600',
+      img: img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600,
       detail: 'Comprehensive patch testing, allergy management, and targeted antimicrobial therapies for all skin infections and reactions.',
     },
     {
       key: 'hairfall',
       title: 'Hair Fall & Alopecia',
       category: 'Hair Care',
-      img: 'https://lh3.googleusercontent.com/d/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi=w600',
+      img: img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600,
       detail: 'Advanced dermoscopy analysis to identify the root cause of hair fall whether Telogen Effluvium or progressive alopecia with a personalized treatment plan.',
     },
     {
       key: 'prp',
       title: 'PRP Hair Therapy',
       category: 'Hair Care',
-      img: 'https://lh3.googleusercontent.com/d/19ipRdJ70CWRqphVNz5BEdahPp_r9-vxL=w600',
+      img: img_19ipRdJ70CWRqphVNz5BEdahPp_r9_vxL_w600,
       detail: 'Platelet-Rich Plasma injections using your own growth factors to stimulate dormant follicles and increase hair thickness significantly.',
     },
     {
       key: 'anxiety',
       title: 'Anxiety & Stress',
       category: 'Psychiatry',
-      img: 'https://lh3.googleusercontent.com/d/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF=w600',
+      img: img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600,
       detail: 'Evidence-based therapies, including CBT, to help identify triggers, manage panic attacks, and build emotional resilience.',
     },
     {
       key: 'depression',
       title: 'Depression & Mood',
       category: 'Psychiatry',
-      img: 'https://lh3.googleusercontent.com/d/1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo=w600',
+      img: img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600,
       detail: 'Comprehensive support through pharmacological management and deep talk therapy to treat clinical depression and mood imbalances safely.',
     },
     {
       key: 'sleep',
       title: 'Sleep & Insomnia',
       category: 'Psychiatry',
-      img: 'https://lh3.googleusercontent.com/d/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4=w600',
+      img: img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w600,
       detail: 'Diagnosis and treatment of sleep disorders linked to psychological stress, with targeted sleep hygiene protocols.',
     },
   ];
@@ -163,9 +179,9 @@ export default function Home() {
       if (localPosts && localPosts.length > 0) {
         setDisplayPosts(localPosts);
       }
-    } catch(e) {}
+    } catch (e) { }
   }, []);
-  
+
   // Reveal animation logic
   useEffect(() => {
     const revealObserver = new IntersectionObserver((entries) => {
@@ -177,7 +193,7 @@ export default function Home() {
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.service-card, .review-card, .value-item, .loc-item, .assessment-container, .contact-form, .reveal').forEach(el => revealObserver.observe(el));
-    
+
     return () => revealObserver.disconnect();
   }, []);
 
@@ -192,18 +208,18 @@ export default function Home() {
     const phone = formData.get('phone');
     const service = formData.get('service');
     const message = formData.get('message');
-    
+
     const ownerNumber = "919025011711";
     const text = `*New Appointment Request - REVIVE Clinic*%0A%0A` +
-                 `*Name:* ${name}%0A` +
-                 `*Phone:* ${phone}%0A` +
-                 `*Service:* ${service}%0A` +
-                 `*Message:* ${message || "No message provided"}`;
-    
+      `*Name:* ${name}%0A` +
+      `*Phone:* ${phone}%0A` +
+      `*Service:* ${service}%0A` +
+      `*Message:* ${message || "No message provided"}`;
+
     const whatsappUrl = `https://wa.me/${ownerNumber}?text=${text}`;
-    
+
     e.target.querySelector('#submitBtn').textContent = 'Redirecting to WhatsApp...';
-    
+
     setTimeout(() => {
       window.open(whatsappUrl, '_blank');
       setFormSuccess(true);
@@ -217,7 +233,7 @@ export default function Home() {
       {/* HERO */}
       <section id="hero">
         <div className="hero-overlay"></div>
-        <img src="https://lh3.googleusercontent.com/d/16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC=w1920-h1080" alt="REVIVE Clinic interior" className="hero-img" />
+        <img src={img_16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w1920_h1080} alt="REVIVE Clinic interior" className="hero-img" />
         <div className="hero-content">
           <div className="hero-badge">4.9 Stars · Trusted by 1100+ patients</div>
           <h1 className="hero-tagline">Revive Your Radiance &amp; Peace</h1>
@@ -250,13 +266,13 @@ export default function Home() {
           </div>
 
           <div className="services-tabs">
-            <button 
+            <button
               className={`service-tab-btn ${activeTab === 'skin' ? 'active' : ''}`}
               onClick={() => setActiveTab('skin')}
             >
               Skin &amp; Hair Care
             </button>
-            <button 
+            <button
               className={`service-tab-btn ${activeTab === 'mind' ? 'active' : ''}`}
               onClick={() => setActiveTab('mind')}
             >
@@ -302,27 +318,48 @@ export default function Home() {
 
       {/* ABOUT */}
       <section id="about" className="section about-section">
-        <div className="container about-grid">
-          <div className="about-visual">
-            <img src="https://lh3.googleusercontent.com/d/1PgMsWg-jw6Rix5qj9M8NvrLXGF-AUP93=w1200" alt="REVIVE Clinic caring doctor" className="about-img" />
-            <div className="about-card-stack">
-              <div className="about-card-bg"></div>
-              <div className="about-card-main">
-                <div className="about-stat-pill">4.9 Stars Salem's Top Rated Clinic</div>
-                <p className="about-card-quote">"Your health journey deserves a team that sees all of you."</p>
-                <div className="about-card-pills">
-                  <span>Skin</span><span>Hair</span><span>Mind</span>
+        <div className="container about-centered">
+          <div className="about-text about-text--center">
+            <p className="section-eyebrow">About Us</p>
+
+            {/* Meet Our Experts Button — above heading */}
+            <div className="about-experts-panel">
+              <button
+                className={`meet-experts-btn ${showExperts ? 'open' : ''}`}
+                onClick={() => setShowExperts(v => !v)}
+              >
+                <Users size={20} />
+                <span>Meet Our Experts</span>
+                <ChevronDown size={18} className={`meb-chevron ${showExperts ? 'rotated' : ''}`} />
+              </button>
+
+              <div className={`experts-dropdown ${showExperts ? 'visible' : ''}`}>
+                <div className="expert-card">
+                  <div className="expert-img-wrap">
+                    <img src={yogeswariImg} alt="Dr. Yogeswari Subramanian" />
+                  </div>
+                  <div className="expert-info">
+                    <h4>Dr. Yogeswari Subramanian</h4>
+                    <span className="expert-qual">MBBS, MD, DNB – DVL</span>
+                    <span className="expert-role skin-role">Dermatologist &amp; Aesthetic Specialist</span>
+                  </div>
+                </div>
+                <div className="expert-card">
+                  <div className="expert-img-wrap">
+                    <img src={sivaImg} alt="Dr. P.T. Sivakumar" />
+                  </div>
+                  <div className="expert-info">
+                    <h4>Dr. P.T. Sivakumar</h4>
+                    <span className="expert-qual">MBBS, MD – CMC Vellore</span>
+                    <span className="expert-role mind-role">Consultant Psychiatrist</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="about-text">
-            <p className="section-eyebrow">About Us</p>
+
             <h2>Salem's Trusted Skin &amp; Mind Clinic</h2>
-            <p style={{ textAlign: 'justify' }}>REVIVE was founded on a simple belief true healthcare lies in balancing science with practicality and real-life needs.</p>
-            <p style={{ textAlign: 'justify', marginTop: '12px' }}>We believe treatment should not just focus on a disease, but on the person as a whole. Every patient's concerns, lifestyle, and well-being matter.</p>
-            <p style={{ textAlign: 'justify', marginTop: '12px' }}>At REVIVE, we provide evidence-based dermatology and compassionate mental healthcare with personalized, high-quality care at the center of everything we do.</p>
-            <div className="about-values">
+            <p style={{ textAlign: 'justify', maxWidth: '700px', margin: '0 auto' }}>REVIVE was founded on a simple belief true healthcare lies in balancing science with practicality and real-life needs. We believe treatment should not just focus on a disease, but on the person as a whole.</p>
+            <div className="about-values about-values--row">
               <div className="value-item">
                 <div className="value-icon-wrap"><Heart /></div>
                 <div>
@@ -345,10 +382,13 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <Link to="/about" className="btn-primary">Explore Now</Link>
+
+            <Link to="/about" className="btn-primary" style={{ marginTop: '24px', display: 'inline-block' }}>Explore Now</Link>
           </div>
         </div>
       </section>
+
+
 
       {/* REVIEWS */}
       <section id="reviews" className="section reviews-section">
@@ -408,7 +448,7 @@ export default function Home() {
       {/* ASSESSMENT TOOL */}
       <section id="assessment" className="section assessment-section">
         <div className="container">
-          <div 
+          <div
             className="assessment-container reveal"
             style={{ background: `linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url(${ASSESSMENT_BG}) center/cover no-repeat` }}
           >
@@ -417,14 +457,16 @@ export default function Home() {
               <h2>Find the Right Care for You</h2>
               <p>Not sure where to start? Select your primary concern and our system will recommend the best specialist for your needs.</p>
               <div className="assessment-options" id="assessmentOptions">
-                <button className={`assess-btn ${assessment === 'dermatology' ? 'active' : ''}`} data-target="dermatology" onClick={() => handleAssessmentClick('dermatology')}>Skin Concerns (Acne, Glow, Rash)</button>
-                <button className={`assess-btn ${assessment === 'trichology' ? 'active' : ''}`} data-target="trichology" onClick={() => handleAssessmentClick('trichology')}>Hair & Scalp (Hairfall, Dandruff)</button>
-                <button className={`assess-btn ${assessment === 'psychiatry' ? 'active' : ''}`} data-target="psychiatry" onClick={() => handleAssessmentClick('psychiatry')}>Mental Peace (Stress, Anxiety, Sleep)</button>
+                <button className={`assess-btn ${assessment === 'dermatology' ? 'active' : ''}`} data-target="dermatology" onClick={() => handleAssessmentClick('dermatology')}>Skin</button>
+                <button className={`assess-btn ${assessment === 'trichology' ? 'active' : ''}`} data-target="trichology" onClick={() => handleAssessmentClick('trichology')}>Hair</button>
+                <button className={`assess-btn ${assessment === 'aesthetic' ? 'active' : ''}`} data-target="aesthetic" onClick={() => handleAssessmentClick('aesthetic')}>Aesthetic</button>
+                <button className={`assess-btn ${assessment === 'psychiatry' ? 'active' : ''}`} data-target="psychiatry" onClick={() => handleAssessmentClick('psychiatry')}>Psychiatric</button>
+                <button className={`assess-btn ${assessment === 'counseling' ? 'active' : ''}`} data-target="counseling" onClick={() => handleAssessmentClick('counseling')}>Counseling</button>
               </div>
             </div>
-            <div 
-              className={`assessment-result ${assessment ? 'has-bg' : ''}`} 
-              style={{ backgroundImage: assessment === 'dermatology' ? `url(${DERMATOLOGY_IMG})` : assessment === 'trichology' ? `url(${TRICHOLOGY_IMG})` : assessment === 'psychiatry' ? `url(${COUNSELING_IMG})` : 'none' }}
+            <div
+              className={`assessment-result ${assessment ? 'has-bg' : ''}`}
+              style={{ backgroundImage: assessment === 'dermatology' ? `url(${DERMATOLOGY_IMG})` : assessment === 'trichology' ? `url(${TRICHOLOGY_IMG})` : assessment === 'aesthetic' ? `url(${TRICHOLOGY_IMG})` : (assessment === 'psychiatry' || assessment === 'counseling') ? `url(${COUNSELING_IMG})` : 'none' }}
             >
               {!assessment && (
                 <div className="result-placeholder">
@@ -448,11 +490,27 @@ export default function Home() {
                   <a href="#contact" className="btn-primary">Book Consultation</a>
                 </div>
               )}
+              {assessment === 'aesthetic' && (
+                <div className="result-card">
+                  <User style={{ color: 'var(--teal-light)', width: '48px', height: '48px', margin: '0 auto 16px', display: 'block' }} />
+                  <h4>Aesthetic &amp; Cosmetology</h4>
+                  <p>Enhance your natural beauty with premium aesthetic treatments — Botox, fillers, lasers — calibrated for subtle, natural-looking results.</p>
+                  <a href="#contact" className="btn-primary">Book Consultation</a>
+                </div>
+              )}
               {assessment === 'psychiatry' && (
                 <div className="result-card">
                   <Brain style={{ color: 'var(--teal-light)', width: '48px', height: '48px', margin: '0 auto 16px', display: 'block' }} />
-                  <h4>Psychiatry &amp; Counseling</h4>
-                  <p>Our empathetic psychiatric and counseling team is here to support you. We provide a safe, confidential space for your mental health.</p>
+                  <h4>Psychiatric Care</h4>
+                  <p>Our empathetic psychiatrist provides a safe, confidential space for diagnosis and effective medical intervention for your mental health.</p>
+                  <a href="#contact" className="btn-primary">Book a Consultation</a>
+                </div>
+              )}
+              {assessment === 'counseling' && (
+                <div className="result-card">
+                  <Heart style={{ color: 'var(--teal-light)', width: '48px', height: '48px', margin: '0 auto 16px', display: 'block' }} />
+                  <h4>Counseling</h4>
+                  <p>Connect with experienced counselors to navigate stress, anxiety, and relationship challenges through compassionate talk therapy.</p>
                   <a href="#contact" className="btn-primary">Book a Consultation</a>
                 </div>
               )}
@@ -502,7 +560,7 @@ export default function Home() {
                 <div className="loc-icon-wrap"><MapPin /></div>
                 <div>
                   <strong>Address</strong>
-                  <p>First Floor, S.S. Complex, Trichy Main Road, Seelanaickenpatti, Salem<br /><em>Opposite Bharat Petroleum, above ICICI Bank</em></p>
+                  <p>First floor, S.S Complex, Trichy Main Rd,above ICICI Bank, opposite to Bharath petroleum,Annamali Nagar, M G R Nagar, Seelanaickenpatti,Salem, Tamil Nadu 636201</p>
                 </div>
               </div>
               <div className="loc-item">
@@ -516,16 +574,16 @@ export default function Home() {
                 <div className="loc-icon-wrap"><Calendar /></div>
                 <div>
                   <strong>Business Hours</strong>
-                  <p>Mon - Sat: 9 AM - 8 PM | Sun: 10 AM - 4 PM<br /><span className="open-now">Open Now · Closes at 8 PM</span></p>
+                  <p>Mon - Fri: 9 AM - 8 PM | Sat - Sun: 11 AM - 2 PM<br /><span className="open-now">Open Now · Closes at 8 PM</span></p>
                 </div>
               </div>
             </div>
-            <a href="https://www.google.com/maps/place/REVIVE+Skin,+Hair+and+Mind+Clinic/@11.6271869,78.1455354,17z/data=!3m1!4b1!4m6!3m5!1s0x3babef3e4f401225:0x59aa31edb3388109!8m2!3d11.6271869!4d78.1481103!16s%2Fg%2F11lztc_cl8?hl=en&entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="btn-primary">Get Directions on Google Maps</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=REVIVE+Skin,+Hair+and+Mind+Clinic,+First+floor,+S.S+Complex,+Trichy+Main+Rd,+above+ICICI+Bank,+opposite+to+Bharath+petroleum,+Annamali+Nagar,+M+G+R+Nagar,+Seelanaickenpatti,+Salem,+Tamil+Nadu+636201" target="_blank" rel="noopener noreferrer" className="btn-primary">Get Directions on Google Maps</a>
           </div>
           <div className="map-embed">
             <iframe
               title="REVIVE Clinic Location Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.0!2d78.15!3d11.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDM5JzAwLjAiTiA3OMKwMDknMDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?width=100%25&height=100%25&hl=en&q=REVIVE%20Skin,%20Hair%20and%20Mind%20Clinic,%20First%20floor,%20S.S%20Complex,%20Trichy%20Main%20Rd,%20above%20ICICI%20Bank,%20opposite%20to%20Bharath%20petroleum,%20Annamali%20Nagar,%20M%20G%20R%20Nagar,%20Seelanaickenpatti,%20Salem,%20Tamil%20Nadu%20636201&t=&z=15&ie=UTF8&iwloc=B&output=embed"
               width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy">
             </iframe>
           </div>
@@ -590,8 +648,8 @@ export default function Home() {
               </div>
               <div className="hours-panel">
                 <h3>Hours</h3>
-                <div className="hours-row"><span>Mon – Sat</span><span>9 AM – 8 PM</span></div>
-                <div className="hours-row"><span>Sunday</span><span>10 AM – 4 PM</span></div>
+                <div className="hours-row"><span>Mon - Fri</span><span>9 AM - 8 PM</span></div>
+                <div className="hours-row"><span>Sat - Sun</span><span>11 AM - 2 PM</span></div>
                 <div className="hours-note">Walk-ins welcome. Appointments preferred.</div>
               </div>
               <div className="lgbtq-badge">

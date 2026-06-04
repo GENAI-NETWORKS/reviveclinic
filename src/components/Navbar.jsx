@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, User, Brain } from 'lucide-react';
+import { ChevronDown, User, Brain, Sparkles } from 'lucide-react';
 import logoImg from '../assets/logo.jpeg';
 
 export default function Navbar() {
@@ -83,8 +83,15 @@ export default function Navbar() {
                 <Link to="/service-dermatology" className="nav-dropdown-item" onClick={closeMenu}>
                   <span className="nav-dd-icon nav-dd-icon--skin"><User /></span>
                   <span>
-                    <strong>Dermatology &amp; Hair Care</strong>
+                    <strong>Skin &amp; Hair Care</strong>
                     <small>Skin, Hair &amp; Scalp Care</small>
+                  </span>
+                </Link>
+                <Link to="/service-aesthetic" className="nav-dropdown-item" onClick={closeMenu}>
+                  <span className="nav-dd-icon nav-dd-icon--mind" style={{ background: '#f3e8ff', color: '#a855f7' }}><Sparkles /></span>
+                  <span>
+                    <strong>Aesthetic &amp; Cosmetology</strong>
+                    <small>Premium Aesthetic Care</small>
                   </span>
                 </Link>
                 <Link to="/service-psychiatry" className="nav-dropdown-item" onClick={closeMenu}>
@@ -97,9 +104,10 @@ export default function Navbar() {
               </div>
             </li>
             <li><Link to="/#about" onClick={closeMenu}>About</Link></li>
+            <li><Link to="/gallery" onClick={closeMenu}>Gallery</Link></li>
             <li><Link to="/#reviews" onClick={closeMenu}>Reviews</Link></li>
             <li><Link to="/#blog" onClick={closeMenu}>Blog</Link></li>
-            <li><Link to="/#location" onClick={closeMenu}>Location</Link></li>
+            <li><Link to="/#contact" onClick={closeMenu}>Contact</Link></li>
             <li><Link to="/#contact" className="nav-cta" onClick={closeMenu}>Book Appointment</Link></li>
           </ul>
         </div>

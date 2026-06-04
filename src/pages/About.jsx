@@ -1,4 +1,24 @@
-export default function About() {
+
+import img_1TLa_Gi3OBzDlbV36VP9_jgwpjFDBy0RH_w800 from '../assets/1TLa_Gi3OBzDlbV36VP9-jgwpjFDBy0RH_w800.jpg';
+import img_1hx76iuD00gi45QVYVCGRRvH6kEBCuwUc_w1200 from '../assets/1hx76iuD00gi45QVYVCGRRvH6kEBCuwUc_w1200.jpg';
+import img_1rX9c24pjZxgkjxC4MyXqdgaTJDHPFUjy_w1000 from '../assets/1rX9c24pjZxgkjxC4MyXqdgaTJDHPFUjy_w1000.jpg';
+import img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w800 from '../assets/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w800.jpg';
+import img_1WWoGa3_PXSIsuzYZh_41CYSvwaLopxkb_w1000 from '../assets/1WWoGa3_PXSIsuzYZh-41CYSvwaLopxkb_w1000.jpg';
+import img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w1000 from '../assets/1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w1000.jpg';
+import img_16DhL2WHmDT6zjsVbnyLkcjG3V9niZqhb_w1000 from '../assets/16DhL2WHmDT6zjsVbnyLkcjG3V9niZqhb_w1000.jpg';
+import img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200 from '../assets/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200.jpg';
+import img_16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w800 from '../assets/16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w800.jpg';
+import img_1PgMsWg_jw6Rix5qj9M8NvrLXGF_AUP93_w1000 from '../assets/1PgMsWg-jw6Rix5qj9M8NvrLXGF-AUP93_w1000.jpg';
+import img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800 from '../assets/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD_w800.jpg';
+import img_19ipRdJ70CWRqphVNz5BEdahPp_r9_vxL_w1000 from '../assets/19ipRdJ70CWRqphVNz5BEdahPp_r9-vxL_w1000.jpg';
+import img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w1200 from '../assets/1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w1200.jpg';
+import img_1eE1wcDq1dazzC_Yp0AV43w0SNsmxs58O_w800 from '../assets/1eE1wcDq1dazzC-Yp0AV43w0SNsmxs58O_w800.jpg';
+import img_14FafUJDHHgbhGkmrORrKMSIQa7cz3MDO_w1000 from '../assets/14FafUJDHHgbhGkmrORrKMSIQa7cz3MDO_w1000.jpg';
+import img_1_QPT1_9ghEjDQchCRlLm6tIY89PJIvOG_w1000 from '../assets/1_QPT1-9ghEjDQchCRlLm6tIY89PJIvOG_w1000.jpg';
+import img_1TzkYdWDgM0ayoD9PPHHGy8iFuXwEawpi_w800 from '../assets/1TzkYdWDgM0ayoD9PPHHGy8iFuXwEawpi_w800.jpg';
+import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000.jpg';
+import img_1pfpnmZmHcRL7BH__4mDebQSJCbTqtIf2_w800 from '../assets/1pfpnmZmHcRL7BH_-4mDebQSJCbTqtIf2_w800.jpg';
+import img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w1000 from '../assets/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4_w1000.jpg';export default function About() {
   return (
     <main>
       <section className="about-hero">
@@ -24,22 +44,22 @@ export default function About() {
           </div>
 
           <div className="bento-item bento-small">
-            <img src="https://lh3.googleusercontent.com/d/1TLa_Gi3OBzDlbV36VP9-jgwpjFDBy0RH=w800" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1TLa_Gi3OBzDlbV36VP9_jgwpjFDBy0RH_w800} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-large">
-            <img src="https://lh3.googleusercontent.com/d/1hx76iuD00gi45QVYVCGRRvH6kEBCuwUc=w1200" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1hx76iuD00gi45QVYVCGRRvH6kEBCuwUc_w1200} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-tall">
-            <img src="https://lh3.googleusercontent.com/d/1rX9c24pjZxgkjxC4MyXqdgaTJDHPFUjy=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1rX9c24pjZxgkjxC4MyXqdgaTJDHPFUjy_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-small">
-            <img src="https://lh3.googleusercontent.com/d/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF=w800" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w800} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-wide">
-            <img src="https://lh3.googleusercontent.com/d/1WWoGa3_PXSIsuzYZh-41CYSvwaLopxkb=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1WWoGa3_PXSIsuzYZh_41CYSvwaLopxkb_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-wide">
-            <img src="https://lh3.googleusercontent.com/d/1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
 
           <div className="bento-item bento-text-card bento-small" style={{ background: 'var(--primary)', color: '#fff' }}>
@@ -48,47 +68,47 @@ export default function About() {
           </div>
 
           <div className="bento-item bento-wide">
-            <img src="https://lh3.googleusercontent.com/d/16DhL2WHmDT6zjsVbnyLkcjG3V9niZqhb=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_16DhL2WHmDT6zjsVbnyLkcjG3V9niZqhb_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-large">
-            <img src="https://lh3.googleusercontent.com/d/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja=w1200" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-small">
-            <img src="https://lh3.googleusercontent.com/d/16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC=w800" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w800} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-wide">
-            <img src="https://lh3.googleusercontent.com/d/1PgMsWg-jw6Rix5qj9M8NvrLXGF-AUP93=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1PgMsWg_jw6Rix5qj9M8NvrLXGF_AUP93_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-small">
-            <img src="https://lh3.googleusercontent.com/d/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD=w800" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-wide">
-            <img src="https://lh3.googleusercontent.com/d/19ipRdJ70CWRqphVNz5BEdahPp_r9-vxL=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_19ipRdJ70CWRqphVNz5BEdahPp_r9_vxL_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
 
           <div className="bento-item bento-large">
-            <img src="https://lh3.googleusercontent.com/d/1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo=w1200" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w1200} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-small">
-            <img src="https://lh3.googleusercontent.com/d/1eE1wcDq1dazzC-Yp0AV43w0SNsmxs58O=w800" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1eE1wcDq1dazzC_Yp0AV43w0SNsmxs58O_w800} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-tall">
-            <img src="https://lh3.googleusercontent.com/d/14FafUJDHHgbhGkmrORrKMSIQa7cz3MDO=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_14FafUJDHHgbhGkmrORrKMSIQa7cz3MDO_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-wide">
-            <img src="https://lh3.googleusercontent.com/d/1_QPT1-9ghEjDQchCRlLm6tIY89PJIvOG=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1_QPT1_9ghEjDQchCRlLm6tIY89PJIvOG_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-small">
-            <img src="https://lh3.googleusercontent.com/d/1TzkYdWDgM0ayoD9PPHHGy8iFuXwEawpi=w800" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1TzkYdWDgM0ayoD9PPHHGy8iFuXwEawpi_w800} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-wide">
-            <img src="https://lh3.googleusercontent.com/d/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-small">
-            <img src="https://lh3.googleusercontent.com/d/1pfpnmZmHcRL7BH_-4mDebQSJCbTqtIf2=w800" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1pfpnmZmHcRL7BH__4mDebQSJCbTqtIf2_w800} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-wide">
-            <img src="https://lh3.googleusercontent.com/d/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4=w1000" alt="REVIVE Facility" loading="lazy" />
+            <img src={img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
         </div>
       </section>

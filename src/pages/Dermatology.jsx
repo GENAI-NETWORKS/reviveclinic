@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  ChevronRight, User, CheckCircle, Calendar, Zap, Star, Sun, Shield, Droplets, Heart, Search, Microscope, Activity, Wind, TrendingUp, Pill
+  ChevronRight, User, CheckCircle, Calendar, Zap, Star, Sun, Shield, Droplets, Heart, Search, Microscope, Activity, Wind, TrendingUp, Pill, ChevronDown
 } from 'lucide-react';
 import yogeswariImg from '../assets/Yogeswari Subramanian.jpeg';
+
+function TreatmentCard({ icon, title, desc }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`treatment-card tc-accordion ${open ? 'tc-open' : ''}`} onClick={() => setOpen(v => !v)}>
+      <div className="tc-header">
+        <div className="tc-icon">{icon}</div>
+        <h3>{title}</h3>
+        <ChevronDown size={18} className={`tc-chevron ${open ? 'rotated' : ''}`} />
+      </div>
+      <div className="tc-body">
+        <p>{desc}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function Dermatology() {
   return (
@@ -41,10 +57,7 @@ export default function Dermatology() {
             <div className="doctor-profile-text">
               <h3 style={{ marginTop: '-8px' }}>Dr. Yogeswari Subramanian</h3>
               <div className="dp-specialty">Board certified Dermatologist</div>
-              <p style={{ textAlign: 'justify' }}>At REVIVE Clinic, we believe healthy skin and strong, vibrant hair are foundational to your confidence. Our comprehensive dermatology and hair care services treat a wide spectrum of skin, hair, and scalp conditions.</p>
-              <p style={{ textAlign: 'justify' }}>Dr. Yogeswari Subramanian (MBBS, MD, DNB - DVL) is a highly skilled and compassionate dermatologist dedicated to providing comprehensive care. With extensive training in clinical and aesthetic dermatology, she specializes in acne management, scar revision, pigmentation treatments, and advanced hair restoration therapies.</p>
-              <p style={{ textAlign: 'justify' }}>By combining medically proven techniques, advanced diagnostics, and customized treatment plans, she ensures that every patient receives tailored care designed to achieve long-lasting, healthy results.</p>
-              <p style={{ textAlign: 'justify' }}>Dr. Yogeswari stays at the forefront of dermatological advancements, ensuring that her patients benefit from the latest evidence-based treatments and cutting-edge aesthetic procedures. Whether you are dealing with chronic skin conditions, seeking hair restoration, or looking to rejuvenate your complexion, she provides a welcoming, empathetic environment where your concerns are heard and addressed.</p>
+              <p style={{ textAlign: 'justify' }}>Dr. Yogeswari Subramanian (MBBS, MD, DNB - DVL) is a highly skilled dermatologist specializing in advanced clinical and aesthetic care. Combining medical expertise with cutting-edge treatments like laser therapy and hair restoration, she provides tailored, evidence-based solutions for radiant skin and healthy hair.</p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '24px 0 0', color: 'var(--text-main)', fontSize: '0.95rem' }}>
                 <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start' }}><CheckCircle style={{ width: '18px', height: '18px', color: 'var(--primary)', marginRight: '12px', flexShrink: 0 }} /> Expert in Clinical &amp; Aesthetic Dermatology</li>
                 <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start' }}><CheckCircle style={{ width: '18px', height: '18px', color: 'var(--primary)', marginRight: '12px', flexShrink: 0 }} /> Advanced Hair Restoration Protocols</li>
@@ -61,70 +74,22 @@ export default function Dermatology() {
       <div className="sp-content-bottom">
         <div className="sp-section-label" style={{ marginTop: 0 }}><h2>Skin Care Treatments</h2></div>
         <div className="treatments-grid">
-          <div className="treatment-card">
-            <div className="tc-icon"><Zap /></div>
-            <h3>Acne &amp; Scar Management</h3>
-            <p>Advanced chemical peels, laser therapy, and personalized topical regimens to clear acne and resurface skin for a flawless complexion.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Star /></div>
-            <h3>Anti-Aging &amp; Rejuvenation</h3>
-            <p>Micro-needling, gentle injectables, and hydration facials to stimulate collagen and restore youthful, plump skin.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Sun /></div>
-            <h3>Pigmentation &amp; Glow Rituals</h3>
-            <p>Targeted Q-switch laser sessions and customized peels to treat melasma, sunspots, and uneven tone for a radiant complexion.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Shield /></div>
-            <h3>Eczema &amp; Medical Dermatology</h3>
-            <p>Fast-acting relief and long-term management strategies for eczema, psoriasis, and severe rashes to soothe and protect your skin.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Droplets /></div>
-            <h3>Chemical Peels &amp; Lasers</h3>
-            <p>Medical-grade chemical exfoliation and laser resurfacing for deep skin renewal, pore reduction, and texture improvement.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Heart /></div>
-            <h3>Skin Allergy &amp; Infections</h3>
-            <p>Comprehensive patch testing, allergy management, and targeted antimicrobial therapies for all skin infections and reactions.</p>
-          </div>
+          <TreatmentCard icon={<Zap />} title="Acne &amp; Scar Management" desc="Advanced chemical peels, laser therapy, and personalized topical regimens to clear acne and resurface skin for a flawless complexion." />
+          <TreatmentCard icon={<Star />} title="Anti-Aging &amp; Rejuvenation" desc="Micro-needling, gentle injectables, and hydration facials to stimulate collagen and restore youthful, plump skin." />
+          <TreatmentCard icon={<Sun />} title="Pigmentation &amp; Glow Rituals" desc="Targeted Q-switch laser sessions and customized peels to treat melasma, sunspots, and uneven tone for a radiant complexion." />
+          <TreatmentCard icon={<Shield />} title="Eczema &amp; Medical Dermatology" desc="Fast-acting relief and long-term management strategies for eczema, psoriasis, and severe rashes to soothe and protect your skin." />
+          <TreatmentCard icon={<Droplets />} title="Chemical Peels &amp; Lasers" desc="Medical-grade chemical exfoliation and laser resurfacing for deep skin renewal, pore reduction, and texture improvement." />
+          <TreatmentCard icon={<Heart />} title="Skin Allergy &amp; Infections" desc="Comprehensive patch testing, allergy management, and targeted antimicrobial therapies for all skin infections and reactions." />
         </div>
 
         <div className="sp-section-label" style={{ marginTop: '40px' }}><h2>Hair &amp; Scalp Care (Trichology)</h2></div>
         <div className="treatments-grid">
-          <div className="treatment-card">
-            <div className="tc-icon"><Search /></div>
-            <h3>Hair Fall &amp; Alopecia</h3>
-            <p>Advanced dermoscopy analysis to identify the root cause of hair fall - whether Telogen Effluvium or progressive alopecia - with a personalized treatment plan.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Microscope /></div>
-            <h3>Scalp Analysis &amp; Treatment</h3>
-            <p>Comprehensive microscopic scalp assessment to evaluate follicle health, density, and scalp condition for targeted therapeutic intervention.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Activity /></div>
-            <h3>PRP Hair Therapy</h3>
-            <p>Platelet-Rich Plasma injections using your own growth factors to stimulate dormant follicles, extend the growth phase, and increase hair thickness significantly.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Wind /></div>
-            <h3>Dandruff &amp; Seborrheic Dermatitis</h3>
-            <p>Medical-grade topical treatments and deep-cleansing scalp therapies to restore balance, eliminate flakes, and relieve chronic scalp irritation.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><TrendingUp /></div>
-            <h3>Hair Growth Protocols</h3>
-            <p>Customized growth protocols combining targeted serums, low-level laser therapy, and nutritional support for maximum hair density restoration.</p>
-          </div>
-          <div className="treatment-card">
-            <div className="tc-icon"><Pill /></div>
-            <h3>Nutritional Hair Support</h3>
-            <p>Comprehensive nutritional profiling to correct deficiencies in Iron, Vitamin D, and Zinc that fuel hair growth from the inside out.</p>
-          </div>
+          <TreatmentCard icon={<Search />} title="Hair Fall &amp; Alopecia" desc="Advanced dermoscopy analysis to identify the root cause of hair fall - whether Telogen Effluvium or progressive alopecia - with a personalized treatment plan." />
+          <TreatmentCard icon={<Microscope />} title="Scalp Analysis &amp; Treatment" desc="Comprehensive microscopic scalp assessment to evaluate follicle health, density, and scalp condition for targeted therapeutic intervention." />
+          <TreatmentCard icon={<Activity />} title="PRP Hair Therapy" desc="Platelet-Rich Plasma injections using your own growth factors to stimulate dormant follicles, extend the growth phase, and increase hair thickness significantly." />
+          <TreatmentCard icon={<Wind />} title="Dandruff &amp; Seborrheic Dermatitis" desc="Medical-grade topical treatments and deep-cleansing scalp therapies to restore balance, eliminate flakes, and relieve chronic scalp irritation." />
+          <TreatmentCard icon={<TrendingUp />} title="Hair Growth Protocols" desc="Customized growth protocols combining targeted serums, low-level laser therapy, and nutritional support for maximum hair density restoration." />
+          <TreatmentCard icon={<Pill />} title="Nutritional Hair Support" desc="Comprehensive nutritional profiling to correct deficiencies in Iron, Vitamin D, and Zinc that fuel hair growth from the inside out." />
         </div>
 
         <div className="process-section">

@@ -12,13 +12,14 @@ export default function Footer() {
             <span>REVIVE</span>
           </div>
           <p className="footer-tagline">Holistic Care for Your Skin, Hair &amp; Mind</p>
-          <p className="footer-addr">First Floor, S.S. Complex, Trichy Main Road,<br />Seelanaickenpatti, Salem, Tamil Nadu</p>
+          <p className="footer-addr">First floor, S.S Complex, Trichy Main Rd,above ICICI Bank, opposite to Bharath petroleum,Annamali Nagar, M G R Nagar, Seelanaickenpatti,Salem, Tamil Nadu 636201</p>
           <a href="tel:+919025011711" className="footer-phone">+91 90250 11711</a>
         </div>
         <div className="footer-links">
           <h4>Services</h4>
           <ul>
             <li><Link to="/service-dermatology">Dermatology &amp; Hair Care</Link></li>
+            <li><Link to="/service-aesthetic">Aesthetic &amp; Cosmetology</Link></li>
             <li><Link to="/service-psychiatry">Psychiatry &amp; Counseling</Link></li>
           </ul>
         </div>
@@ -40,7 +41,7 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <p>© 2026 REVIVE Skin, Hair and Mind Clinic. All rights reserved.</p>
-        <p>Salem, Tamil Nadu · <a href="tel:+919025011711">+91 90250 11711</a></p>
+        <p>Salem, Tamil Nadu · <a href="tel:+9025011711">+91 90250 11711</a></p>
       </div>
     </footer>
   );
