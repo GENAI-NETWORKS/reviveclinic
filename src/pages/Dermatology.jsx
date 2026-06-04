@@ -58,11 +58,6 @@ export default function Dermatology() {
               <h3 style={{ marginTop: '-8px' }}>Dr. Yogeswari Subramanian</h3>
               <div className="dp-specialty">Board certified Dermatologist</div>
               <p style={{ textAlign: 'justify' }}>Dr. Yogeswari Subramanian (MBBS, MD, DNB - DVL) is a highly skilled dermatologist specializing in advanced clinical and aesthetic care. Combining medical expertise with cutting-edge treatments like laser therapy and hair restoration, she provides tailored, evidence-based solutions for radiant skin and healthy hair.</p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '24px 0 0', color: 'var(--text-main)', fontSize: '0.95rem' }}>
-                <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start' }}><CheckCircle style={{ width: '18px', height: '18px', color: 'var(--primary)', marginRight: '12px', flexShrink: 0 }} /> Expert in Clinical &amp; Aesthetic Dermatology</li>
-                <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start' }}><CheckCircle style={{ width: '18px', height: '18px', color: 'var(--primary)', marginRight: '12px', flexShrink: 0 }} /> Advanced Hair Restoration Protocols</li>
-                <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start' }}><CheckCircle style={{ width: '18px', height: '18px', color: 'var(--primary)', marginRight: '12px', flexShrink: 0 }} /> Evidence-Based, Patient-First Approach</li>
-              </ul>
             </div>
             <div className="doctor-profile-img">
               <img src={yogeswariImg} alt="Dr. Yogeswari Subramanian" />

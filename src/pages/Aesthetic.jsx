@@ -58,12 +58,6 @@ export default function Aesthetic() {
               <h3 style={{ marginTop: '-8px' }}>Dr. Yogeswari Subramanian</h3>
               <div className="dp-specialty">Expert in Aesthetic Dermatology</div>
               <p style={{ textAlign: 'justify' }}>Dr. Yogeswari Subramanian (MBBS, MD, DNB - DVL) blends medical expertise with artistic precision to deliver premium aesthetic care. Utilizing advanced, minimally invasive treatments like Botox, fillers, and lasers, she provides subtle, natural-looking enhancements tailored to your unique cosmetic goals.</p>
-              
-              <ul style={{ listStyle: 'none', padding: 0, margin: '24px 0 0', color: 'var(--text-main)', fontSize: '0.95rem' }}>
-                <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start' }}><CheckCircle style={{ width: '18px', height: '18px', color: '#a855f7', marginRight: '12px', flexShrink: 0 }} /> Non-Invasive Anti-Aging Solutions</li>
-                <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start' }}><CheckCircle style={{ width: '18px', height: '18px', color: '#a855f7', marginRight: '12px', flexShrink: 0 }} /> State-of-the-art Laser Technologies</li>
-                <li style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start' }}><CheckCircle style={{ width: '18px', height: '18px', color: '#a855f7', marginRight: '12px', flexShrink: 0 }} /> Personalized Aesthetic Roadmaps</li>
-              </ul>
             </div>
             <div className="doctor-profile-img">
               <img src={yogeswariImg} alt="Dr. Yogeswari Subramanian" />
