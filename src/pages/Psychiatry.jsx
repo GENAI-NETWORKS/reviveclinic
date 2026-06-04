@@ -63,7 +63,7 @@ export default function Psychiatry() {
               <div className="doctor-profile-text">
                 <h3 style={{ marginTop: '-8px' }}>Dr. P.T. Sivakumar</h3>
                 <div className="dp-specialty">Consultant Psychiatrist</div>
-                <p style={{ textAlign: 'justify' }}>Dr. P.T. Sivakumar (MBBS, MD - CMC Vellore) is a compassionate Consultant Psychiatrist specializing in holistic mental health care. He combines precise medical interventions with empathetic counseling to effectively treat anxiety, depression, and stress, empowering you to regain control of your well-being.</p>
+                <p style={{ textAlign: 'justify' }}>Dr. P.T. Sivakumar (MBBS, MD - CMC Vellore) provides compassionate, holistic psychiatric care. He combines medical interventions with empathetic counseling to effectively treat anxiety, depression, and stress.</p>
               </div>
               <div className="doctor-profile-img">
                 <img src={sivakumarImg} alt="Dr. P.T. Sivakumar" />

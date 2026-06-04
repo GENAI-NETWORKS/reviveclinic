@@ -57,7 +57,7 @@ export default function Aesthetic() {
             <div className="doctor-profile-text">
               <h3 style={{ marginTop: '-8px' }}>Dr. Yogeswari Subramanian</h3>
               <div className="dp-specialty">Expert in Aesthetic Dermatology</div>
-              <p style={{ textAlign: 'justify' }}>Dr. Yogeswari Subramanian (MBBS, MD, DNB - DVL) blends medical expertise with artistic precision to deliver premium aesthetic care. Utilizing advanced, minimally invasive treatments like Botox, fillers, and lasers, she provides subtle, natural-looking enhancements tailored to your unique cosmetic goals.</p>
+              <p style={{ textAlign: 'justify' }}>Dr. Yogeswari Subramanian (MBBS, MD, DNB - DVL) blends medical expertise with artistic precision to deliver premium aesthetic care, providing subtle, natural-looking enhancements using advanced treatments.</p>
             </div>
             <div className="doctor-profile-img">
               <img src={yogeswariImg} alt="Dr. Yogeswari Subramanian" />

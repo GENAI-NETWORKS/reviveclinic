@@ -57,7 +57,7 @@ export default function Dermatology() {
             <div className="doctor-profile-text">
               <h3 style={{ marginTop: '-8px' }}>Dr. Yogeswari Subramanian</h3>
               <div className="dp-specialty">Board certified Dermatologist</div>
-              <p style={{ textAlign: 'justify' }}>Dr. Yogeswari Subramanian (MBBS, MD, DNB - DVL) is a highly skilled dermatologist specializing in advanced clinical and aesthetic care. Combining medical expertise with cutting-edge treatments like laser therapy and hair restoration, she provides tailored, evidence-based solutions for radiant skin and healthy hair.</p>
+              <p style={{ textAlign: 'justify' }}>Dr. Yogeswari Subramanian (MBBS, MD, DNB - DVL) is a highly skilled dermatologist specializing in advanced clinical and aesthetic care. She provides tailored, evidence-based solutions for radiant skin and healthy hair.</p>
             </div>
             <div className="doctor-profile-img">
               <img src={yogeswariImg} alt="Dr. Yogeswari Subramanian" />
