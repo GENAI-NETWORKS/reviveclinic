@@ -4,7 +4,7 @@ import {
   ChevronRight, Brain, CheckCircle, Calendar, CloudLightning, HeartCrack, Moon, Users, Briefcase, Rainbow, ChevronDown
 } from 'lucide-react';
 import sivakumarImg from '../assets/sivakumar.jpeg';
-import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600.jpg';
+import counselingImg from '../assets/counseling.jpg';
 
 function TreatmentCard({ icon, title, desc }) {
   const [open, setOpen] = useState(false);
@@ -27,7 +27,7 @@ export default function Psychiatry() {
     <main className="psychiatry-theme">
       <section className="sp-hero" style={{ position: 'relative' }}>
         <img
-          src={img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600}
+          src={counselingImg}
           alt=""
           aria-hidden="true"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.28, zIndex: 0 }}

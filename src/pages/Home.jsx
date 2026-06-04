@@ -29,6 +29,7 @@ import img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600 from '../assets/1AG2mEOtX8tAo8
 import img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w600 from '../assets/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4_w600.jpg';
 import img_16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w1920_h1080 from '../assets/16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w1920-h1080.jpg';
 import img_1PgMsWg_jw6Rix5qj9M8NvrLXGF_AUP93_w1200 from '../assets/1PgMsWg-jw6Rix5qj9M8NvrLXGF-AUP93_w1200.jpg';
+import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600.jpg';
 
 // Drive image URLs for assessment section
 const ASSESSMENT_BG = img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w1920;
@@ -233,7 +234,7 @@ export default function Home() {
       {/* HERO */}
       <section id="hero">
         <div className="hero-overlay"></div>
-        <img src={img_16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w1920_h1080} alt="REVIVE Clinic interior" className="hero-img" />
+        <img src={img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600} alt="REVIVE Clinic interior" className="hero-img" />
         <div className="hero-content">
           <div className="hero-badge">4.9 Stars · Trusted by 1100+ patients</div>
           <h1 className="hero-tagline">Revive Your Radiance &amp; Peace</h1>
