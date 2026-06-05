@@ -6,14 +6,14 @@ import {
 import sivakumarImg from '../assets/sivakumar.jpeg';
 import counselingImg from '../assets/counseling.jpg';
 
-function TreatmentCard({ icon, title, desc }) {
-  const [open, setOpen] = useState(false);
+function TreatmentCard({ id, icon, title, desc, openCard, setOpenCard }) {
+  const isOpen = openCard === id;
   return (
-    <div className={`treatment-card tc-accordion ${open ? 'tc-open' : ''}`} onClick={() => setOpen(v => !v)}>
+    <div className={`treatment-card tc-accordion ${isOpen ? 'tc-open' : ''}`} onClick={() => setOpenCard(isOpen ? null : id)}>
       <div className="tc-header">
         <div className="tc-icon">{icon}</div>
         <h3>{title}</h3>
-        <ChevronDown size={18} className={`tc-chevron ${open ? 'rotated' : ''}`} />
+        <ChevronDown size={18} className={`tc-chevron ${isOpen ? 'rotated' : ''}`} />
       </div>
       <div className="tc-body">
         <p>{desc}</p>
@@ -23,6 +23,8 @@ function TreatmentCard({ icon, title, desc }) {
 }
 
 export default function Psychiatry() {
+  const [openCard, setOpenCard] = useState(null);
+
   return (
     <main className="psychiatry-theme">
       <section className="sp-hero" style={{ position: 'relative' }}>
@@ -75,12 +77,12 @@ export default function Psychiatry() {
         <div className="sp-content-bottom">
           <div className="sp-section-label" style={{ marginTop: 0 }}><h2>Areas of Support</h2></div>
           <div className="treatments-grid">
-            <TreatmentCard icon={<CloudLightning />} title="Anxiety &amp; Panic" desc="Evidence-based therapies, including CBT, to help you identify triggers, manage panic attacks, and build emotional resilience against chronic stress." />
-            <TreatmentCard icon={<HeartCrack />} title="Depression &amp; Mood" desc="Comprehensive support through both pharmacological management and deep talk therapy to treat clinical depression and mood imbalances safely." />
-            <TreatmentCard icon={<Moon />} title="Sleep &amp; Insomnia" desc="Diagnosis of sleep disorders linked to psychological stress, treated with targeted sleep hygiene protocols and relaxation therapies." />
-            <TreatmentCard icon={<Users />} title="Relationship Counseling" desc="A supportive framework for couples and families to improve communication skills, foster healthier dynamics, and navigate conflict." />
-            <TreatmentCard icon={<Briefcase />} title="Stress &amp; Burnout" desc="Strategic interventions for high-performing individuals experiencing professional burnout, focusing on boundary setting and work-life balance." />
-            <TreatmentCard icon={<Rainbow />} title="LGBTQ+ Affirmative Therapy" desc="A completely inclusive, celebratory space providing culturally competent mental health support for individuals across all identities." />
+            <TreatmentCard id="psych-1" openCard={openCard} setOpenCard={setOpenCard} icon={<CloudLightning />} title="Anxiety &amp; Panic" desc="Evidence-based therapies, including CBT, to help you identify triggers, manage panic attacks, and build emotional resilience against chronic stress." />
+            <TreatmentCard id="psych-2" openCard={openCard} setOpenCard={setOpenCard} icon={<HeartCrack />} title="Depression &amp; Mood" desc="Comprehensive support through both pharmacological management and deep talk therapy to treat clinical depression and mood imbalances safely." />
+            <TreatmentCard id="psych-3" openCard={openCard} setOpenCard={setOpenCard} icon={<Moon />} title="Sleep &amp; Insomnia" desc="Diagnosis of sleep disorders linked to psychological stress, treated with targeted sleep hygiene protocols and relaxation therapies." />
+            <TreatmentCard id="psych-4" openCard={openCard} setOpenCard={setOpenCard} icon={<Users />} title="Relationship Counseling" desc="A supportive framework for couples and families to improve communication skills, foster healthier dynamics, and navigate conflict." />
+            <TreatmentCard id="psych-5" openCard={openCard} setOpenCard={setOpenCard} icon={<Briefcase />} title="Stress &amp; Burnout" desc="Strategic interventions for high-performing individuals experiencing professional burnout, focusing on boundary setting and work-life balance." />
+            <TreatmentCard id="psych-6" openCard={openCard} setOpenCard={setOpenCard} icon={<Rainbow />} title="LGBTQ+ Affirmative Therapy" desc="A completely inclusive, celebratory space providing culturally competent mental health support for individuals across all identities." />
           </div>
 
           <div className="process-section">
