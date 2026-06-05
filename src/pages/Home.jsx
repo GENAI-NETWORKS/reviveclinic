@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Heart, Microscope, ShieldCheck, User, Brain, ArrowRight, Calendar,
-  MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Feather, ChevronDown, ChevronUp, Users, Star, Sparkles, HeartPulse
+  MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Feather, ChevronDown, ChevronUp, Users, Star, Sparkles, HeartPulse, Scissors
 } from 'lucide-react';
 import { getBlogPosts } from '../utils/blogApi';
 
