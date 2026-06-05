@@ -186,8 +186,8 @@ export default function Admin() {
     return matchesSearch && matchesFilter;
   });
 
-  const dermaCount = posts.filter(p => ['Skin', 'Hair', 'Aesthetic'].includes(p.category)).length;
-  const psychCount = posts.filter(p => ['Psychiatric', 'Counseling'].includes(p.category)).length;
+  const dermaCount = posts.filter(p => p.category === 'Skin' || p.category === 'Hair').length;
+  const psychCount = posts.filter(p => p.category === 'Psychiatry' || p.category === 'Counselling').length;
 
   return (
     <div className="admin-page">
@@ -275,9 +275,8 @@ export default function Admin() {
                   <option value="ALL">All Categories</option>
                   <option value="Skin">Skin</option>
                   <option value="Hair">Hair</option>
-                  <option value="Aesthetic">Aesthetic</option>
-                  <option value="Psychiatric">Psychiatric</option>
-                  <option value="Counseling">Counseling</option>
+                  <option value="Psychiatry">Psychiatry</option>
+                  <option value="Counselling">Counselling</option>
                 </select>
               </div>
               <button className="btn-create" onClick={openCreateModal}>
@@ -302,8 +301,7 @@ export default function Admin() {
                   {filteredPosts.map(post => {
                     let catClass = 'cat-badge--skin';
                     if (post.category === 'Hair') catClass = 'cat-badge--hair';
-                    if (post.category === 'Aesthetic') catClass = 'cat-badge--hair';
-                    if (post.category === 'Psychiatric' || post.category === 'Counseling') catClass = 'cat-badge--mind';
+                    if (post.category === 'Psychiatry' || post.category === 'Counselling') catClass = 'cat-badge--mind';
                     
                     const cleanImg = getCleanImageUrl(post.image);
                     const thumbUrl = cleanImg.type === 'webpage' ? 'https://placehold.co/100x100/1e293b/94a3b8?text=Web+Link' : cleanImg.url;
@@ -374,9 +372,8 @@ export default function Admin() {
                   <select className="form-control" value={editData.category} onChange={e => setEditData({...editData, category: e.target.value})} required>
                     <option value="Skin">Skin</option>
                     <option value="Hair">Hair</option>
-                    <option value="Aesthetic">Aesthetic</option>
-                    <option value="Psychiatric">Psychiatric</option>
-                    <option value="Counseling">Counseling</option>
+                    <option value="Psychiatry">Psychiatry</option>
+                    <option value="Counselling">Counselling</option>
                   </select>
                 </div>
               </div>

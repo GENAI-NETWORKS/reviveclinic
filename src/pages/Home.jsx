@@ -107,42 +107,42 @@ export default function Home() {
     {
       key: 'acne',
       title: 'Acne & Scar Management',
-      category: 'Dermatology',
+      category: 'Skin',
       img: img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w600,
       detail: 'Advanced chemical peels, laser therapy, and personalized topical regimens to clear acne and resurface skin for a flawless complexion.',
     },
     {
       key: 'pigmentation',
       title: 'Pigmentation & Glow',
-      category: 'Dermatology',
+      category: 'Skin',
       img: img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w600,
       detail: 'Targeted Q-switch laser sessions and customized peels to treat melasma, sunspots, and uneven tone for a radiant complexion.',
     },
     {
       key: 'chemical-peel',
       title: 'Chemical Peels & Lasers',
-      category: 'Dermatology',
+      category: 'Skin',
       img: img_1WWoGa3_PXSIsuzYZh_41CYSvwaLopxkb_w600,
       detail: 'Medical-grade chemical exfoliation and laser resurfacing for deep skin renewal, pore reduction, and texture improvement.',
     },
     {
       key: 'allergy',
       title: 'Skin Allergy & Infections',
-      category: 'Dermatology',
+      category: 'Skin',
       img: img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600,
       detail: 'Comprehensive patch testing, allergy management, and targeted antimicrobial therapies for all skin infections and reactions.',
     },
     {
       key: 'hairfall',
       title: 'Hair Fall & Alopecia',
-      category: 'Hair Care',
+      category: 'Hair',
       img: img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600,
       detail: 'Advanced dermoscopy analysis to identify the root cause of hair fall whether Telogen Effluvium or progressive alopecia with a personalized treatment plan.',
     },
     {
       key: 'prp',
       title: 'PRP Hair Therapy',
-      category: 'Hair Care',
+      category: 'Hair',
       img: img_19ipRdJ70CWRqphVNz5BEdahPp_r9_vxL_w600,
       detail: 'Platelet-Rich Plasma injections using your own growth factors to stimulate dormant follicles and increase hair thickness significantly.',
     },
@@ -167,6 +167,20 @@ export default function Home() {
       img: img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w600,
       detail: 'Diagnosis and treatment of sleep disorders linked to psychological stress, with targeted sleep hygiene protocols.',
     },
+    {
+      key: 'counselling',
+      title: 'Individual Counselling',
+      category: 'Counselling',
+      img: img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600,
+      detail: 'One-on-one sessions with experienced counsellors to help navigate stress, grief, life transitions, and personal challenges compassionately.',
+    },
+    {
+      key: 'couples',
+      title: 'Couples & Family Therapy',
+      category: 'Counselling',
+      img: img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600,
+      detail: 'Structured therapy sessions to improve communication, resolve conflict, and strengthen emotional bonds in relationships and families.',
+    },
   ];
 
   const CATEGORY_COLORS = {
@@ -175,6 +189,7 @@ export default function Home() {
     'Aesthetic':   { bg: '#fce7f3', color: '#9d174d' },
     'Psychiatric': { bg: '#eef2ff', color: '#4338ca' },
     'Psychiatry':  { bg: '#eef2ff', color: '#4338ca' },
+    'Counselling': { bg: '#f0fdf4', color: '#166534' },
     'Counseling':  { bg: '#f0fdf4', color: '#166534' },
     'Dermatology': { bg: '#e6f6f4', color: 'var(--primary)' },
     'Hair Care':   { bg: '#fef3e2', color: '#c2700f' },
@@ -281,18 +296,21 @@ export default function Home() {
               className={`service-tab-btn ${activeTab === 'skin' ? 'active' : ''}`}
               onClick={() => setActiveTab('skin')}
             >
-              Skin &amp; Hair Care
+              Skin &amp; Hair
             </button>
             <button
               className={`service-tab-btn ${activeTab === 'mind' ? 'active' : ''}`}
               onClick={() => setActiveTab('mind')}
             >
-              Mind &amp; Psychiatry
+              Psychiatry &amp; Counselling
             </button>
           </div>
 
           <div className="services-accordion">
-            {SERVICES.filter(svc => activeTab === 'skin' ? svc.category !== 'Psychiatry' : svc.category === 'Psychiatry').map(svc => {
+            {SERVICES.filter(svc => activeTab === 'skin'
+              ? svc.category === 'Skin' || svc.category === 'Hair'
+              : svc.category === 'Psychiatry' || svc.category === 'Counselling'
+            ).map(svc => {
               const isOpen = expandedService === svc.key;
               const colors = CATEGORY_COLORS[svc.category] || DEFAULT_COLOR;
               return (
@@ -316,7 +334,11 @@ export default function Home() {
                       </div>
                       <div className="svc-bar-detail-text">
                         <p>{svc.detail}</p>
-                        <Link to={svc.category === 'Psychiatry' ? '/service-psychiatry' : '/service-dermatology'} className="btn-primary" style={{ display: 'inline-block', marginTop: '16px', background: svc.category === 'Psychiatry' ? '#4338ca' : '#2a9d8f' }}>View All {svc.category} Services</Link>
+                        <Link
+                          to={svc.category === 'Psychiatry' || svc.category === 'Counselling' ? '/service-psychiatry' : '/service-dermatology'}
+                          className="btn-primary"
+                          style={{ display: 'inline-block', marginTop: '16px', background: (svc.category === 'Psychiatry' || svc.category === 'Counselling') ? '#4338ca' : '#2a9d8f' }}
+                        >View All {svc.category} Services</Link>
                       </div>
                     </div>
                   )}
