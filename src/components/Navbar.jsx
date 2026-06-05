@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, User, Brain, Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles, Feather, HeartPulse, MessageCircle } from 'lucide-react';
 import logoImg from '../assets/logo.jpeg';
 
 export default function Navbar() {
@@ -80,25 +80,48 @@ export default function Navbar() {
                 Services <ChevronDown className="dropdown-chevron" />
               </a>
               <div className="nav-dropdown-menu">
-                <Link to="/service-dermatology" className="nav-dropdown-item" onClick={closeMenu}>
-                  <span className="nav-dd-icon nav-dd-icon--skin"><User /></span>
+                <Link
+                  to="/service-dermatology"
+                  className="nav-dropdown-item"
+                  onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                >
+                  <span className="nav-dd-icon nav-dd-icon--skin"><Sparkles /></span>
                   <span>
-                    <strong>Skin &amp; Hair Care</strong>
-                    <small>Skin, Hair &amp; Scalp Care</small>
+                    <strong>Skin</strong>
+                    <small>Medical &amp; Aesthetic Care</small>
                   </span>
                 </Link>
-                <Link to="/service-aesthetic" className="nav-dropdown-item" onClick={closeMenu}>
-                  <span className="nav-dd-icon nav-dd-icon--mind" style={{ background: '#f3e8ff', color: '#a855f7' }}><Sparkles /></span>
+                <Link
+                  to="/service-dermatology"
+                  className="nav-dropdown-item"
+                  onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                >
+                  <span className="nav-dd-icon nav-dd-icon--skin" style={{ background: '#fef3e2', color: '#c2700f' }}><Feather /></span>
                   <span>
-                    <strong>Aesthetic &amp; Cosmetology</strong>
-                    <small>Premium Aesthetic Care</small>
+                    <strong>Hair</strong>
+                    <small>Hair Fall &amp; Scalp Care</small>
                   </span>
                 </Link>
-                <Link to="/service-psychiatry" className="nav-dropdown-item" onClick={closeMenu}>
-                  <span className="nav-dd-icon nav-dd-icon--mind"><Brain /></span>
+                <Link
+                  to="/service-psychiatry"
+                  className="nav-dropdown-item"
+                  onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                >
+                  <span className="nav-dd-icon nav-dd-icon--mind"><HeartPulse /></span>
                   <span>
-                    <strong>Psychiatry &amp; Counseling</strong>
+                    <strong>Psychiatry</strong>
                     <small>Mental Health Support</small>
+                  </span>
+                </Link>
+                <Link
+                  to="/service-psychiatry"
+                  className="nav-dropdown-item"
+                  onClick={() => { closeMenu(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                >
+                  <span className="nav-dd-icon nav-dd-icon--mind" style={{ background: '#f0fdf4', color: '#166534' }}><MessageCircle /></span>
+                  <span>
+                    <strong>Counselling</strong>
+                    <small>Therapy &amp; Guidance</small>
                   </span>
                 </Link>
               </div>

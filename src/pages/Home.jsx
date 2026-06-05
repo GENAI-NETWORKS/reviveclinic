@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Heart, Microscope, ShieldCheck, User, Brain, ArrowRight, Calendar,
-  MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Scissors, ChevronDown, ChevronUp, Users, Star
+  MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Feather, ChevronDown, ChevronUp, Users, Star, Sparkles, HeartPulse
 } from 'lucide-react';
 import { getBlogPosts } from '../utils/blogApi';
 
@@ -99,100 +99,68 @@ export default function Home() {
   const [formSuccess, setFormSuccess] = useState(false);
   const [displayPosts, setDisplayPosts] = useState(DEFAULT_BLOG_POSTS);
   const [expandedService, setExpandedService] = useState(null);
-  const [activeTab, setActiveTab] = useState('skin'); // 'skin' or 'mind'
+  const [activeTab, setActiveTab] = useState('skin');
+
+  const switchTab = (tab) => {
+    setActiveTab(tab);
+    setExpandedService(null); // reset to closed when switching tabs
+  };
 
   const toggleService = (key) => setExpandedService(prev => prev === key ? null : key);
 
   const SERVICES = [
     {
-      key: 'acne',
-      title: 'Acne & Scar Management',
+      key: 'skin',
+      title: 'Skin',
       category: 'Skin',
+      icon: <Sparkles size={28} />,
+      iconBg: '#e6f6f4',
+      iconColor: '#2a9d8f',
       img: img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w600,
-      detail: 'Advanced chemical peels, laser therapy, and personalized topical regimens to clear acne and resurface skin for a flawless complexion.',
+      detail: 'Comprehensive medical and aesthetic dermatology services, including treatments for acne, pigmentation, allergies, and advanced chemical peels for a flawless complexion.',
     },
     {
-      key: 'pigmentation',
-      title: 'Pigmentation & Glow',
-      category: 'Skin',
-      img: img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w600,
-      detail: 'Targeted Q-switch laser sessions and customized peels to treat melasma, sunspots, and uneven tone for a radiant complexion.',
-    },
-    {
-      key: 'chemical-peel',
-      title: 'Chemical Peels & Lasers',
-      category: 'Skin',
-      img: img_1WWoGa3_PXSIsuzYZh_41CYSvwaLopxkb_w600,
-      detail: 'Medical-grade chemical exfoliation and laser resurfacing for deep skin renewal, pore reduction, and texture improvement.',
-    },
-    {
-      key: 'allergy',
-      title: 'Skin Allergy & Infections',
-      category: 'Skin',
-      img: img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600,
-      detail: 'Comprehensive patch testing, allergy management, and targeted antimicrobial therapies for all skin infections and reactions.',
-    },
-    {
-      key: 'hairfall',
-      title: 'Hair Fall & Alopecia',
+      key: 'hair',
+      title: 'Hair',
       category: 'Hair',
+      icon: <Feather size={28} />,
+      iconBg: '#fef3e2',
+      iconColor: '#c2700f',
       img: img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600,
-      detail: 'Advanced dermoscopy analysis to identify the root cause of hair fall whether Telogen Effluvium or progressive alopecia with a personalized treatment plan.',
+      detail: 'Advanced scalp analysis and targeted therapies like PRP to identify the root cause of hair fall and stimulate healthy hair regrowth.',
     },
     {
-      key: 'prp',
-      title: 'PRP Hair Therapy',
-      category: 'Hair',
-      img: img_19ipRdJ70CWRqphVNz5BEdahPp_r9_vxL_w600,
-      detail: 'Platelet-Rich Plasma injections using your own growth factors to stimulate dormant follicles and increase hair thickness significantly.',
-    },
-    {
-      key: 'anxiety',
-      title: 'Anxiety & Stress',
+      key: 'psychiatry',
+      title: 'Psychiatry',
       category: 'Psychiatry',
+      icon: <HeartPulse size={28} />,
+      iconBg: '#eef2ff',
+      iconColor: '#4338ca',
       img: img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600,
-      detail: 'Evidence-based therapies, including CBT, to help identify triggers, manage panic attacks, and build emotional resilience.',
-    },
-    {
-      key: 'depression',
-      title: 'Depression & Mood',
-      category: 'Psychiatry',
-      img: img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600,
-      detail: 'Comprehensive support through pharmacological management and deep talk therapy to treat clinical depression and mood imbalances safely.',
-    },
-    {
-      key: 'sleep',
-      title: 'Sleep & Insomnia',
-      category: 'Psychiatry',
-      img: img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w600,
-      detail: 'Diagnosis and treatment of sleep disorders linked to psychological stress, with targeted sleep hygiene protocols.',
+      detail: 'Evidence-based psychiatric support for anxiety, depression, sleep disorders, and mood imbalances through careful diagnosis and medical management.',
     },
     {
       key: 'counselling',
-      title: 'Individual Counselling',
+      title: 'Counselling',
       category: 'Counselling',
-      img: img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600,
-      detail: 'One-on-one sessions with experienced counsellors to help navigate stress, grief, life transitions, and personal challenges compassionately.',
-    },
-    {
-      key: 'couples',
-      title: 'Couples & Family Therapy',
-      category: 'Counselling',
+      icon: <MessageCircle size={28} />,
+      iconBg: '#f0fdf4',
+      iconColor: '#166534',
       img: img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600,
-      detail: 'Structured therapy sessions to improve communication, resolve conflict, and strengthen emotional bonds in relationships and families.',
+      detail: 'Compassionate, one-on-one talk therapy and structured sessions for individuals, couples, and families navigating stress, grief, and life transitions.',
     },
   ];
 
   const CATEGORY_COLORS = {
-    'Skin':        { bg: '#e6f6f4', color: 'var(--primary)' },
-    'Hair':        { bg: '#fef3e2', color: '#c2700f' },
-    'Aesthetic':   { bg: '#fce7f3', color: '#9d174d' },
+    'Skin': { bg: '#e6f6f4', color: 'var(--primary)' },
+    'Hair': { bg: '#fef3e2', color: '#c2700f' },
+    'Aesthetic': { bg: '#fce7f3', color: '#9d174d' },
     'Psychiatric': { bg: '#eef2ff', color: '#4338ca' },
-    'Psychiatry':  { bg: '#eef2ff', color: '#4338ca' },
+    'Psychiatry': { bg: '#eef2ff', color: '#4338ca' },
     'Counselling': { bg: '#f0fdf4', color: '#166534' },
-    'Counseling':  { bg: '#f0fdf4', color: '#166534' },
+    'Counseling': { bg: '#f0fdf4', color: '#166534' },
     'Dermatology': { bg: '#e6f6f4', color: 'var(--primary)' },
-    'Hair Care':   { bg: '#fef3e2', color: '#c2700f' },
+    'Hair Care': { bg: '#fef3e2', color: '#c2700f' },
   };
   const DEFAULT_COLOR = { bg: '#f1f5f9', color: '#475569' };
 
@@ -260,26 +228,58 @@ export default function Home() {
       <section id="hero">
         <div className="hero-overlay"></div>
         <img src={img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600} alt="REVIVE Clinic interior" className="hero-img" />
-        <div className="hero-content">
-          <div className="hero-badge">4.9 Stars · Trusted by 1100+ patients</div>
-          <h1 className="hero-tagline">Revive Your Radiance &amp; Peace</h1>
-          <p className="hero-sub">Expert Dermatology &amp; Hair Care · Psychiatry &amp; Counseling<br />Salem's most trusted skin &amp; mind clinic.</p>
-          <div className="hero-actions">
-            <Link to="/service-dermatology" className="btn-ghost">Consult for Skin & Hair</Link>
-            <Link to="/service-psychiatry" className="btn-ghost">Consult for Mind</Link>
+        <div className="hero-layout">
+          {/* LEFT: Main content */}
+          <div className="hero-content">
+            <div className="hero-badge">4.9 Stars · Trusted by 1100+ patients</div>
+            <h1 className="hero-tagline">Revive Your Radiance &amp; Peace</h1>
+            <p className="hero-sub">Expert Dermatology &amp; Hair Care · Psychiatry &amp; Counseling<br />Salem's most trusted skin &amp; mind clinic.</p>
+            <div className="hero-actions">
+              <Link to="/service-dermatology" className="btn-ghost">Consult for Skin &amp; Hair</Link>
+              <Link to="/service-psychiatry" className="btn-ghost">Consult for Mind</Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* TRUST BAR */}
-      <div className="trust-bar">
-        <div className="trust-item"><span className="trust-num">4.9 Stars</span><span className="trust-label">Google Rating</span></div>
-        <div className="trust-divider"></div>
-        <div className="trust-item"><span className="trust-num">1100+</span><span className="trust-label">Happy Patients</span></div>
-        <div className="trust-divider"></div>
-        <div className="trust-item"><span className="trust-num">2</span><span className="trust-label">Core Specialties</span></div>
-        <div className="trust-divider"></div>
-        <div className="trust-item"><span className="trust-num">Open</span><span className="trust-label">Until 8 PM Daily</span></div>
+      {/* TRUST SPLIT CARD */}
+      <div className="trust-split">
+        {/* LEFT — credentials */}
+        <div className="trust-split-left">
+          <p className="trust-split-eyebrow">Why Patients Choose Us</p>
+          <h2 className="trust-split-heading">Salem's Most <br />Trusted Clinic</h2>
+          <div className="trust-split-badges">
+            <span className="trust-badge"><span className="trust-badge-check">✓</span> Qualified Specialists</span>
+            <span className="trust-badge"><span className="trust-badge-check">✓</span> Modern Treatment Facility</span>
+            <span className="trust-badge"><span className="trust-badge-check">✓</span> Personalized Care</span>
+            <span className="trust-badge"><span className="trust-badge-check">✓</span> Evidence-Based Medicine</span>
+          </div>
+        </div>
+        {/* RIGHT — stats */}
+        <div className="trust-split-right">
+          <div className="trust-stat-grid">
+            <div className="trust-stat">
+              <span className="trust-stat-num">4.9</span>
+              <span className="trust-stat-unit">★</span>
+              <span className="trust-stat-label">Google Rating</span>
+            </div>
+            <div className="trust-stat">
+              <span className="trust-stat-num">1100</span>
+              <span className="trust-stat-unit">+</span>
+              <span className="trust-stat-label">Happy Patients</span>
+            </div>
+            <div className="trust-stat">
+              <span className="trust-stat-num">4</span>
+              <span className="trust-stat-unit"></span>
+              <span className="trust-stat-label">Specialties</span>
+            </div>
+            <div className="trust-stat">
+              <span className="trust-stat-num">8</span>
+              <span className="trust-stat-unit">PM</span>
+              <span className="trust-stat-label">Open Until Daily</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* SERVICES */}
@@ -292,33 +292,31 @@ export default function Home() {
           </div>
 
           <div className="services-tabs">
-            <button
-              className={`service-tab-btn ${activeTab === 'skin' ? 'active' : ''}`}
-              onClick={() => setActiveTab('skin')}
-            >
-              Skin &amp; Hair
-            </button>
-            <button
-              className={`service-tab-btn ${activeTab === 'mind' ? 'active' : ''}`}
-              onClick={() => setActiveTab('mind')}
-            >
-              Psychiatry &amp; Counselling
-            </button>
+            {SERVICES.map(svc => (
+              <button
+                key={svc.key}
+                className={`service-tab-btn ${activeTab === svc.key ? 'active' : ''}`}
+                onClick={() => switchTab(svc.key)}
+                style={activeTab === svc.key ? { '--tab-active-color': svc.iconColor, '--tab-active-bg': svc.iconBg } : {}}
+              >
+                <span className="svc-tab-icon" style={{ color: activeTab === svc.key ? svc.iconColor : 'inherit' }}>
+                  {svc.icon}
+                </span>
+                {svc.title}
+              </button>
+            ))}
           </div>
 
           <div className="services-accordion">
-            {SERVICES.filter(svc => activeTab === 'skin'
-              ? svc.category === 'Skin' || svc.category === 'Hair'
-              : svc.category === 'Psychiatry' || svc.category === 'Counselling'
-            ).map(svc => {
+            {SERVICES.filter(svc => svc.key === activeTab).map(svc => {
               const isOpen = expandedService === svc.key;
               const colors = CATEGORY_COLORS[svc.category] || DEFAULT_COLOR;
               return (
                 <div key={svc.key} className={`svc-bar ${isOpen ? 'svc-bar--open' : ''}`}>
                   <button className="svc-bar-header" onClick={() => toggleService(svc.key)} aria-expanded={isOpen}>
                     <div className="svc-bar-left">
-                      <div className="svc-bar-thumb">
-                        <img src={svc.img} alt={svc.title} />
+                      <div className="svc-bar-icon-wrap" style={{ background: svc.iconBg, color: svc.iconColor }}>
+                        {svc.icon}
                       </div>
                       <div className="svc-bar-title">
                         <span className="svc-bar-name">{svc.title}</span>
@@ -337,7 +335,7 @@ export default function Home() {
                         <Link
                           to={svc.category === 'Psychiatry' || svc.category === 'Counselling' ? '/service-psychiatry' : '/service-dermatology'}
                           className="btn-primary"
-                          style={{ display: 'inline-block', marginTop: '16px', background: (svc.category === 'Psychiatry' || svc.category === 'Counselling') ? '#4338ca' : '#2a9d8f' }}
+                          style={{ display: 'inline-block', marginTop: '16px', background: svc.iconColor }}
                         >View All {svc.category} Services</Link>
                       </div>
                     </div>
@@ -492,14 +490,13 @@ export default function Home() {
               <div className="assessment-options" id="assessmentOptions">
                 <button className={`assess-btn ${assessment === 'dermatology' ? 'active' : ''}`} data-target="dermatology" onClick={() => handleAssessmentClick('dermatology')}>Skin</button>
                 <button className={`assess-btn ${assessment === 'trichology' ? 'active' : ''}`} data-target="trichology" onClick={() => handleAssessmentClick('trichology')}>Hair</button>
-                <button className={`assess-btn ${assessment === 'aesthetic' ? 'active' : ''}`} data-target="aesthetic" onClick={() => handleAssessmentClick('aesthetic')}>Aesthetic</button>
                 <button className={`assess-btn ${assessment === 'psychiatry' ? 'active' : ''}`} data-target="psychiatry" onClick={() => handleAssessmentClick('psychiatry')}>Psychiatric</button>
                 <button className={`assess-btn ${assessment === 'counseling' ? 'active' : ''}`} data-target="counseling" onClick={() => handleAssessmentClick('counseling')}>Counseling</button>
               </div>
             </div>
             <div
               className={`assessment-result ${assessment ? 'has-bg' : ''}`}
-              style={{ backgroundImage: assessment === 'dermatology' ? `url(${DERMATOLOGY_IMG})` : assessment === 'trichology' ? `url(${TRICHOLOGY_IMG})` : assessment === 'aesthetic' ? `url(${TRICHOLOGY_IMG})` : (assessment === 'psychiatry' || assessment === 'counseling') ? `url(${COUNSELING_IMG})` : 'none' }}
+              style={{ backgroundImage: assessment === 'dermatology' ? `url(${DERMATOLOGY_IMG})` : assessment === 'trichology' ? `url(${TRICHOLOGY_IMG})` : (assessment === 'psychiatry' || assessment === 'counseling') ? `url(${COUNSELING_IMG})` : 'none' }}
             >
               {!assessment && (
                 <div className="result-placeholder">
@@ -520,14 +517,6 @@ export default function Home() {
                   <Scissors style={{ color: 'var(--teal-light)', width: '48px', height: '48px', margin: '0 auto 16px', display: 'block' }} />
                   <h4>Dermatology &amp; Hair Care</h4>
                   <p>For hair and scalp issues, our dermatologist will perform a deep scalp analysis to identify and treat the root cause of hair fall.</p>
-                  <a href="#contact" className="btn-primary">Book Consultation</a>
-                </div>
-              )}
-              {assessment === 'aesthetic' && (
-                <div className="result-card">
-                  <User style={{ color: 'var(--teal-light)', width: '48px', height: '48px', margin: '0 auto 16px', display: 'block' }} />
-                  <h4>Aesthetic &amp; Cosmetology</h4>
-                  <p>Enhance your natural beauty with premium aesthetic treatments — Botox, fillers, lasers — calibrated for subtle, natural-looking results.</p>
                   <a href="#contact" className="btn-primary">Book Consultation</a>
                 </div>
               )}

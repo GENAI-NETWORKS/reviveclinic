@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 import yogeswariImg from '../assets/Yogeswari Subramanian.jpeg';
 
-function TreatmentCard({ icon, title, desc }) {
+function TreatmentCard({ icon, title, conditionsLabel = "Conditions Treated", conditions = [], treatments = [] }) {
   const [open, setOpen] = useState(false);
   return (
     <div className={`treatment-card tc-accordion ${open ? 'tc-open' : ''}`} onClick={() => setOpen(v => !v)}>
@@ -15,7 +15,22 @@ function TreatmentCard({ icon, title, desc }) {
         <ChevronDown size={18} className={`tc-chevron ${open ? 'rotated' : ''}`} />
       </div>
       <div className="tc-body">
-        <p>{desc}</p>
+        {conditions.length > 0 && (
+          <div className="tc-section">
+            <h4>{conditionsLabel}</h4>
+            <ul>
+              {conditions.map((c, i) => <li key={i}>{c}</li>)}
+            </ul>
+          </div>
+        )}
+        {treatments.length > 0 && (
+          <div className="tc-section">
+            <h4>Treatments Available</h4>
+            <ul>
+              {treatments.map((t, i) => <li key={i}>{t}</li>)}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -69,22 +84,78 @@ export default function Dermatology() {
       <div className="sp-content-bottom">
         <div className="sp-section-label" style={{ marginTop: 0 }}><h2>Skin Care Treatments</h2></div>
         <div className="treatments-grid">
-          <TreatmentCard icon={<Zap />} title="Acne &amp; Scar Management" desc="Advanced chemical peels, laser therapy, and personalized topical regimens to clear acne and resurface skin for a flawless complexion." />
-          <TreatmentCard icon={<Star />} title="Anti-Aging &amp; Rejuvenation" desc="Micro-needling, gentle injectables, and hydration facials to stimulate collagen and restore youthful, plump skin." />
-          <TreatmentCard icon={<Sun />} title="Pigmentation &amp; Glow Rituals" desc="Targeted Q-switch laser sessions and customized peels to treat melasma, sunspots, and uneven tone for a radiant complexion." />
-          <TreatmentCard icon={<Shield />} title="Eczema &amp; Medical Dermatology" desc="Fast-acting relief and long-term management strategies for eczema, psoriasis, and severe rashes to soothe and protect your skin." />
-          <TreatmentCard icon={<Droplets />} title="Chemical Peels &amp; Lasers" desc="Medical-grade chemical exfoliation and laser resurfacing for deep skin renewal, pore reduction, and texture improvement." />
-          <TreatmentCard icon={<Heart />} title="Skin Allergy &amp; Infections" desc="Comprehensive patch testing, allergy management, and targeted antimicrobial therapies for all skin infections and reactions." />
+          <TreatmentCard 
+            icon={<Zap />} 
+            title="Acne &amp; Acne Scars" 
+            conditions={["Acne (Pimples)", "Acne Marks", "Acne Scars"]}
+            treatments={["Medical Management", "Chemical Peels", "Microneedling", "PRP Therapy", "Subcision", "TCA CROSS", "Intralesional Injections", "Laser Treatments"]}
+          />
+          <TreatmentCard 
+            icon={<Sun />} 
+            title="Pigmentation &amp; Uneven Skin Tone" 
+            conditions={["Melasma", "Post-inflammatory Pigmentation", "Sunspots", "Uneven Skin Tone"]}
+            treatments={["Medical Management", "Chemical Peels", "Mesotherapy", "Injectable Treatments"]}
+          />
+          <TreatmentCard 
+            icon={<Star />} 
+            title="Skin Rejuvenation &amp; Anti-Ageing" 
+            conditionsLabel="Concerns Treated"
+            conditions={["Fine Lines", "Wrinkles", "Ageing Skin", "Dull Skin"]}
+            treatments={["Medical Management", "PRP Therapy", "Botox", "Skin Boosters"]}
+          />
+          <TreatmentCard 
+            icon={<Shield />} 
+            title="Skin Allergies" 
+            conditions={["Allergic Skin Reactions", "Contact Dermatitis", "Urticaria (Hives)", "Itchy Skin Conditions"]}
+            treatments={["Medical Management", "Allergy Evaluation", "Trigger Identification & Avoidance Guidance"]}
+          />
+          <TreatmentCard 
+            icon={<Droplets />} 
+            title="Skin Infections" 
+            conditions={["Fungal Infections", "Bacterial Infections", "Folliculitis (Boils)", "Warts", "Herpes Infection", "Herpes Zoster (Shingles)", "Chickenpox", "Scabies"]}
+            treatments={["Medical Management", "Cryotherapy (for suitable lesions such as warts)"]}
+          />
+          <TreatmentCard 
+            icon={<Activity />} 
+            title="Chronic &amp; Autoimmune Skin Conditions" 
+            conditions={["Psoriasis", "Eczema", "Vitiligo", "Lichen Planus", "Bullous Disorders", "Leprosy"]}
+            treatments={["Medical Management", "Advanced Biological Treatments"]}
+          />
+          <TreatmentCard 
+            icon={<Heart />} 
+            title="Pediatric Dermatology" 
+            conditions={["Atopic Dermatitis", "Diaper Rash", "Childhood Eczema", "Skin Infections in Children", "Birthmarks", "Common Pediatric Skin Disorders"]}
+            treatments={["Child-Friendly Medical Management", "Parent Counselling & Skin Care Guidance"]}
+          />
+          <TreatmentCard 
+            icon={<TrendingUp />} 
+            title="Scars, Keloids &amp; Stretch Marks" 
+            conditions={["Acne Scars", "Chickenpox Scars", "Post-Traumatic Scars", "Hypertrophic Scars", "Keloids", "Stretch Marks"]}
+            treatments={["Intralesional Injections", "Cryotherapy", "Microneedling", "PRP Therapy", "Laser Treatments"]}
+          />
         </div>
 
         <div className="sp-section-label" style={{ marginTop: '40px' }}><h2>Hair &amp; Scalp Care (Trichology)</h2></div>
         <div className="treatments-grid">
-          <TreatmentCard icon={<Search />} title="Hair Fall &amp; Alopecia" desc="Advanced dermoscopy analysis to identify the root cause of hair fall - whether Telogen Effluvium or progressive alopecia - with a personalized treatment plan." />
-          <TreatmentCard icon={<Microscope />} title="Scalp Analysis &amp; Treatment" desc="Comprehensive microscopic scalp assessment to evaluate follicle health, density, and scalp condition for targeted therapeutic intervention." />
-          <TreatmentCard icon={<Activity />} title="PRP Hair Therapy" desc="Platelet-Rich Plasma injections using your own growth factors to stimulate dormant follicles, extend the growth phase, and increase hair thickness significantly." />
-          <TreatmentCard icon={<Wind />} title="Dandruff &amp; Seborrheic Dermatitis" desc="Medical-grade topical treatments and deep-cleansing scalp therapies to restore balance, eliminate flakes, and relieve chronic scalp irritation." />
-          <TreatmentCard icon={<TrendingUp />} title="Hair Growth Protocols" desc="Customized growth protocols combining targeted serums, low-level laser therapy, and nutritional support for maximum hair density restoration." />
-          <TreatmentCard icon={<Pill />} title="Nutritional Hair Support" desc="Comprehensive nutritional profiling to correct deficiencies in Iron, Vitamin D, and Zinc that fuel hair growth from the inside out." />
+          <TreatmentCard 
+            icon={<Search />} 
+            title="Hair Fall &amp; Hair Loss" 
+            conditions={["Hair Fall", "Male Pattern Baldness (Androgenetic Alopecia)", "Female Pattern Hair Loss", "Alopecia Areata"]}
+            treatments={["Medical Management", "PRP Therapy", "GFC (Growth Factor Concentrate) Therapy", "Hair Transplantation"]}
+          />
+          <TreatmentCard 
+            icon={<Wind />} 
+            title="Dandruff &amp; Scalp Disorders" 
+            conditions={["Dandruff", "Seborrheic Dermatitis", "Scalp Psoriasis"]}
+            treatments={["Medical Management", "Maintenance Care"]}
+          />
+          <TreatmentCard 
+            icon={<Zap />} 
+            title="Unwanted Hair Removal" 
+            conditionsLabel="Concerns Treated"
+            conditions={["Excess Facial Hair", "Excess Body Hair"]}
+            treatments={["Medical Management", "Laser Hair Reduction"]}
+          />
         </div>
 
         <div className="process-section">
