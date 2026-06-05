@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ExternalLink, LogOut, BookOpen, Brain, Search, PlusCircle, Edit3, Trash2, X, Link2, Upload, Eye } from 'lucide-react';
+import { getBlogPosts, saveBlogPost, deleteBlogPost } from '../utils/blogApi';
 
 const DEFAULT_BLOG_POSTS = [
   {
@@ -77,22 +78,31 @@ export default function Admin() {
       setAuthenticated(true);
     }
     
-    let localPosts = JSON.parse(localStorage.getItem('revive_blog_posts'));
-    if (!localPosts || localPosts.length === 0) {
-      localPosts = DEFAULT_BLOG_POSTS;
-    }
-    let migrated = false;
-    localPosts = localPosts.map(p => {
-      if (p.category === 'Skin Care') {
-        migrated = true;
-        return { ...p, category: 'Dermatology & Hair Care' };
+    const loadPosts = async () => {
+      let fetchedPosts = await getBlogPosts();
+      if (!fetchedPosts || fetchedPosts.length === 0) {
+        fetchedPosts = DEFAULT_BLOG_POSTS;
       }
-      return p;
-    });
-    if (migrated || !localStorage.getItem('revive_blog_posts')) {
-      localStorage.setItem('revive_blog_posts', JSON.stringify(localPosts));
-    }
-    setPosts(localPosts);
+      
+      let migrated = false;
+      fetchedPosts = fetchedPosts.map(p => {
+        if (p.category === 'Skin Care') {
+          migrated = true;
+          return { ...p, category: 'Dermatology & Hair Care' };
+        }
+        return p;
+      });
+      
+      if (migrated) {
+        // Save back if migration happened
+        for (const p of fetchedPosts) {
+          if (p.category === 'Dermatology & Hair Care') await saveBlogPost(p);
+        }
+      }
+      setPosts(fetchedPosts);
+    };
+
+    loadPosts();
   }, []);
 
   const handleLogin = (e) => {
@@ -114,7 +124,7 @@ export default function Admin() {
     setError(false);
   };
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
     let newPosts = [...posts];
     
@@ -131,15 +141,15 @@ export default function Admin() {
     }
 
     setPosts(newPosts);
-    localStorage.setItem('revive_blog_posts', JSON.stringify(newPosts));
+    await saveBlogPost(newPost);
     setModalOpen(false);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this article? This action cannot be undone.')) return;
     const newPosts = posts.filter(p => p.id !== id);
     setPosts(newPosts);
-    localStorage.setItem('revive_blog_posts', JSON.stringify(newPosts));
+    await deleteBlogPost(id);
   };
 
   const handleImageFile = (e) => {

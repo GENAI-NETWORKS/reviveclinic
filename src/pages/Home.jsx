@@ -4,6 +4,7 @@ import {
   Heart, Microscope, ShieldCheck, User, Brain, ArrowRight, Calendar,
   MapPin, Phone, MessageCircle, CheckCircle, ArrowLeftRight, Scissors, ChevronDown, ChevronUp, Users, Star
 } from 'lucide-react';
+import { getBlogPosts } from '../utils/blogApi';
 
 import sivaImg from '../assets/sivakumar.jpeg';
 import yogeswariImg from '../assets/Yogeswari Subramanian.jpeg';
@@ -175,12 +176,15 @@ export default function Home() {
   };
 
   useEffect(() => {
-    try {
-      const localPosts = JSON.parse(localStorage.getItem('revive_blog_posts'));
-      if (localPosts && localPosts.length > 0) {
-        setDisplayPosts(localPosts);
-      }
-    } catch (e) { }
+    const fetchPosts = async () => {
+      try {
+        const posts = await getBlogPosts();
+        if (posts && posts.length > 0) {
+          setDisplayPosts(posts);
+        }
+      } catch (e) { }
+    };
+    fetchPosts();
   }, []);
 
   // Reveal animation logic

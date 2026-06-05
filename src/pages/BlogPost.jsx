@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, Clock } from 'lucide-react';
+import { getBlogPost } from '../utils/blogApi';
 
 const DEFAULT_BLOG_POSTS = [
   {
@@ -100,13 +101,11 @@ export default function BlogPost() {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    let localPosts = JSON.parse(localStorage.getItem('revive_blog_posts'));
-    if (!localPosts || localPosts.length === 0) {
-      localPosts = DEFAULT_BLOG_POSTS;
-      localStorage.setItem('revive_blog_posts', JSON.stringify(localPosts));
-    }
-    const foundPost = localPosts.find(p => p.id === id);
-    setPost(foundPost);
+    const fetchPost = async () => {
+      const foundPost = await getBlogPost(id);
+      setPost(foundPost);
+    };
+    fetchPost();
   }, [id]);
 
   if (!post) {
