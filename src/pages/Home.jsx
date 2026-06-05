@@ -21,7 +21,6 @@ import img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800 from '../assets/1N5cm-vugS-Y6f
 import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000.jpg';
 import img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w600 from '../assets/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w600.jpg';
 import img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w600 from '../assets/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD_w600.jpg';
-import img_1WWoGa3_PXSIsuzYZh_41CYSvwaLopxkb_w600 from '../assets/1WWoGa3_PXSIsuzYZh-41CYSvwaLopxkb_w600.jpg';
 import img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600 from '../assets/1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600.jpg';
 import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600.jpg';
 import img_19ipRdJ70CWRqphVNz5BEdahPp_r9_vxL_w600 from '../assets/19ipRdJ70CWRqphVNz5BEdahPp_r9-vxL_w600.jpg';
@@ -33,7 +32,8 @@ import img_1PgMsWg_jw6Rix5qj9M8NvrLXGF_AUP93_w1200 from '../assets/1PgMsWg-jw6Ri
 import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600.jpg';
 
 // Drive image URLs for assessment section
-const ASSESSMENT_BG = img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w1920;
+import assessmentNewBg from '../assets/IMG20251027192429~2.jpg.jpeg';
+const ASSESSMENT_BG = assessmentNewBg;
 const DERMATOLOGY_IMG = img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200;
 const TRICHOLOGY_IMG = img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800;
 const COUNSELING_IMG = img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000;
@@ -269,7 +269,7 @@ export default function Home() {
               <span className="trust-stat-label">Happy Patients</span>
             </div>
             <div className="trust-stat">
-              <span className="trust-stat-num">4</span>
+              <span className="trust-stat-num">2</span>
               <span className="trust-stat-unit"></span>
               <span className="trust-stat-label">Specialties</span>
             </div>
