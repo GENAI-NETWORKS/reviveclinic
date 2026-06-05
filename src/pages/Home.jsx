@@ -170,12 +170,16 @@ export default function Home() {
   ];
 
   const CATEGORY_COLORS = {
-    'Skin':       { bg: '#e6f6f4', color: 'var(--primary)' },
-    'Hair':       { bg: '#fef3e2', color: '#c2700f' },
-    'Aesthetic':  { bg: '#fce7f3', color: '#9d174d' },
-    'Psychiatric':{ bg: '#eef2ff', color: '#4338ca' },
-    'Counseling': { bg: '#f0fdf4', color: '#166534' },
+    'Skin':        { bg: '#e6f6f4', color: 'var(--primary)' },
+    'Hair':        { bg: '#fef3e2', color: '#c2700f' },
+    'Aesthetic':   { bg: '#fce7f3', color: '#9d174d' },
+    'Psychiatric': { bg: '#eef2ff', color: '#4338ca' },
+    'Psychiatry':  { bg: '#eef2ff', color: '#4338ca' },
+    'Counseling':  { bg: '#f0fdf4', color: '#166534' },
+    'Dermatology': { bg: '#e6f6f4', color: 'var(--primary)' },
+    'Hair Care':   { bg: '#fef3e2', color: '#c2700f' },
   };
+  const DEFAULT_COLOR = { bg: '#f1f5f9', color: '#475569' };
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -290,7 +294,7 @@ export default function Home() {
           <div className="services-accordion">
             {SERVICES.filter(svc => activeTab === 'skin' ? svc.category !== 'Psychiatry' : svc.category === 'Psychiatry').map(svc => {
               const isOpen = expandedService === svc.key;
-              const colors = CATEGORY_COLORS[svc.category];
+              const colors = CATEGORY_COLORS[svc.category] || DEFAULT_COLOR;
               return (
                 <div key={svc.key} className={`svc-bar ${isOpen ? 'svc-bar--open' : ''}`}>
                   <button className="svc-bar-header" onClick={() => toggleService(svc.key)} aria-expanded={isOpen}>
