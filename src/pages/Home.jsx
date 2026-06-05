@@ -43,7 +43,7 @@ const DEFAULT_BLOG_POSTS = [
     id: "skincare-routine",
     title: "5 Essential Steps for a Glowing Summer Skin Routine",
     excerpt: "Discover the dermatologist-approved daily habits to protect your skin from UV damage while maintaining a natural, healthy glow all summer long.",
-    category: "Skin Care",
+    category: "Skin",
     author: "Dr. Aditi",
     date: "May 12, 2026",
     image: blogSkinImg,
@@ -52,7 +52,7 @@ const DEFAULT_BLOG_POSTS = [
     id: "hairfall-causes",
     title: "Understanding the Root Causes of Sudden Hair Fall",
     excerpt: "Experiencing unusual shedding? We break down the scientific differences between telogen effluvium, alopecia, and stress-induced hair loss.",
-    category: "Dermatology & Hair Care",
+    category: "Hair",
     author: "Dr. Sharma",
     date: "May 08, 2026",
     image: blogHairImg,
@@ -61,7 +61,7 @@ const DEFAULT_BLOG_POSTS = [
     id: "journaling-anxiety",
     title: "The Power of Journaling for Anxiety Management",
     excerpt: "Learn how setting aside 10 minutes a day for reflective journaling can significantly reduce stress levels and improve your emotional resilience.",
-    category: "Psychiatry & Counseling",
+    category: "Counseling",
     author: "Priya Desai, M.Sc",
     date: "May 02, 2026",
     image: blogMindImg,
@@ -170,9 +170,11 @@ export default function Home() {
   ];
 
   const CATEGORY_COLORS = {
-    'Dermatology': { bg: '#e6f6f4', color: 'var(--primary)' },
-    'Hair Care': { bg: '#fef3e2', color: '#c2700f' },
-    'Psychiatry': { bg: '#eef2ff', color: '#4338ca' },
+    'Skin':       { bg: '#e6f6f4', color: 'var(--primary)' },
+    'Hair':       { bg: '#fef3e2', color: '#c2700f' },
+    'Aesthetic':  { bg: '#fce7f3', color: '#9d174d' },
+    'Psychiatric':{ bg: '#eef2ff', color: '#4338ca' },
+    'Counseling': { bg: '#f0fdf4', color: '#166534' },
   };
 
   useEffect(() => {

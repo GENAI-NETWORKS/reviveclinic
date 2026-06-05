@@ -70,7 +70,7 @@ export default function Admin() {
   const [imageTab, setImageTab] = useState('url'); // 'url' | 'upload'
   const fileInputRef = useRef(null);
   const [editData, setEditData] = useState({
-    id: '', title: '', category: 'Dermatology & Hair Care', author: '', date: '', readTime: '4 min read', image: '', excerpt: '', content: ''
+    id: '', title: '', category: 'Skin', author: '', date: '', readTime: '4 min read', image: '', excerpt: '', content: ''
   });
 
   useEffect(() => {
@@ -168,7 +168,7 @@ export default function Admin() {
   };
 
   const openCreateModal = () => {
-    setEditData({ id: '', title: '', category: 'Dermatology & Hair Care', author: '', date: '', readTime: '4 min read', image: '', excerpt: '', content: '' });
+    setEditData({ id: '', title: '', category: 'Skin', author: '', date: '', readTime: '4 min read', image: '', excerpt: '', content: '' });
     setImageTab('url');
     setModalOpen(true);
   };
@@ -186,8 +186,8 @@ export default function Admin() {
     return matchesSearch && matchesFilter;
   });
 
-  const dermaCount = posts.filter(p => p.category.includes('Skin') || p.category.includes('Hair') || p.category === 'Dermatology & Hair Care').length;
-  const psychCount = posts.filter(p => p.category.includes('Psychiatry') || p.category.includes('Counseling')).length;
+  const dermaCount = posts.filter(p => ['Skin', 'Hair', 'Aesthetic'].includes(p.category)).length;
+  const psychCount = posts.filter(p => ['Psychiatric', 'Counseling'].includes(p.category)).length;
 
   return (
     <div className="admin-page">
@@ -273,8 +273,11 @@ export default function Admin() {
                 </div>
                 <select className="category-filter" value={filter} onChange={(e) => setFilter(e.target.value)}>
                   <option value="ALL">All Categories</option>
-                  <option value="Dermatology & Hair Care">Dermatology & Hair Care</option>
-                  <option value="Psychiatry & Counseling">Psychiatry & Counseling</option>
+                  <option value="Skin">Skin</option>
+                  <option value="Hair">Hair</option>
+                  <option value="Aesthetic">Aesthetic</option>
+                  <option value="Psychiatric">Psychiatric</option>
+                  <option value="Counseling">Counseling</option>
                 </select>
               </div>
               <button className="btn-create" onClick={openCreateModal}>
@@ -298,8 +301,9 @@ export default function Admin() {
                   )}
                   {filteredPosts.map(post => {
                     let catClass = 'cat-badge--skin';
-                    if (post.category.includes('Hair')) catClass = 'cat-badge--hair';
-                    if (post.category.includes('Psychiatry') || post.category.includes('Counseling')) catClass = 'cat-badge--mind';
+                    if (post.category === 'Hair') catClass = 'cat-badge--hair';
+                    if (post.category === 'Aesthetic') catClass = 'cat-badge--hair';
+                    if (post.category === 'Psychiatric' || post.category === 'Counseling') catClass = 'cat-badge--mind';
                     
                     const cleanImg = getCleanImageUrl(post.image);
                     const thumbUrl = cleanImg.type === 'webpage' ? 'https://placehold.co/100x100/1e293b/94a3b8?text=Web+Link' : cleanImg.url;
@@ -368,8 +372,11 @@ export default function Admin() {
                 <div className="form-group">
                   <label>Category</label>
                   <select className="form-control" value={editData.category} onChange={e => setEditData({...editData, category: e.target.value})} required>
-                    <option value="Dermatology & Hair Care">Dermatology & Hair Care</option>
-                    <option value="Psychiatry & Counseling">Psychiatry & Counseling</option>
+                    <option value="Skin">Skin</option>
+                    <option value="Hair">Hair</option>
+                    <option value="Aesthetic">Aesthetic</option>
+                    <option value="Psychiatric">Psychiatric</option>
+                    <option value="Counseling">Counseling</option>
                   </select>
                 </div>
               </div>
