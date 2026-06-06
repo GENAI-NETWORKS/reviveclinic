@@ -1,6 +1,5 @@
 
 import img_1rX9c24pjZxgkjxC4MyXqdgaTJDHPFUjy_w1000 from '../assets/1rX9c24pjZxgkjxC4MyXqdgaTJDHPFUjy_w1000.jpg';
-import img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w800 from '../assets/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w800.jpg';
 import img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w1000 from '../assets/1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w1000.jpg';
 import img_16DhL2WHmDT6zjsVbnyLkcjG3V9niZqhb_w1000 from '../assets/16DhL2WHmDT6zjsVbnyLkcjG3V9niZqhb_w1000.jpg';
 import img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200 from '../assets/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200.jpg';
@@ -15,7 +14,9 @@ import img_1_QPT1_9ghEjDQchCRlLm6tIY89PJIvOG_w1000 from '../assets/1_QPT1-9ghEjD
 import img_1TzkYdWDgM0ayoD9PPHHGy8iFuXwEawpi_w800 from '../assets/1TzkYdWDgM0ayoD9PPHHGy8iFuXwEawpi_w800.jpg';
 import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000.jpg';
 import img_1pfpnmZmHcRL7BH__4mDebQSJCbTqtIf2_w800 from '../assets/1pfpnmZmHcRL7BH_-4mDebQSJCbTqtIf2_w800.jpg';
-import img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w1000 from '../assets/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4_w1000.jpg';export default function About() {
+import img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w1000 from '../assets/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4_w1000.jpg';
+import newGalleryImg from '../assets/image copy.png';
+export default function About() {
   return (
     <main>
       <section className="about-hero">
@@ -42,9 +43,6 @@ import img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w1000 from '../assets/1cS2GDC27NdBX
 
           <div className="bento-item bento-tall">
             <img src={img_1rX9c24pjZxgkjxC4MyXqdgaTJDHPFUjy_w1000} alt="REVIVE Facility" loading="lazy" />
-          </div>
-          <div className="bento-item bento-small">
-            <img src={img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w800} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-wide">
             <img src={img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w1000} alt="REVIVE Facility" loading="lazy" />
@@ -97,6 +95,9 @@ import img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w1000 from '../assets/1cS2GDC27NdBX
           </div>
           <div className="bento-item bento-wide">
             <img src={img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w1000} alt="REVIVE Facility" loading="lazy" />
+          </div>
+          <div className="bento-item bento-large">
+            <img src={newGalleryImg} alt="REVIVE Facility" loading="lazy" style={{ objectFit: 'contain', width: '100%', height: '100%' }} />
           </div>
         </div>
       </section>

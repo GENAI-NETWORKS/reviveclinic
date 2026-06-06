@@ -15,7 +15,8 @@ import blogSkinImg from '../assets/blog_skin.jpg';
 import blogHairImg from '../assets/blog_hair.jpg';
 import blogMindImg from '../assets/blog_mind.jpg';
 import assessmentBgImg from '../assets/assessment-bg.jpg';
-import img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w1920 from '../assets/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w1920.jpg';
+import heroBgImage from '../assets/image.png';
+
 import img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200 from '../assets/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200.jpg';
 import img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800 from '../assets/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD_w800.jpg';
 import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000.jpg';
@@ -24,7 +25,7 @@ import img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w600 from '../assets/1N5cm-vugS-Y6f
 import img_1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600 from '../assets/1rhnpajgpuI2QsypxulxAl5uaC9b_iT_i_w600.jpg';
 import img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600 from '../assets/1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600.jpg';
 import img_19ipRdJ70CWRqphVNz5BEdahPp_r9_vxL_w600 from '../assets/19ipRdJ70CWRqphVNz5BEdahPp_r9-vxL_w600.jpg';
-import img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600 from '../assets/1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600.jpg';
+
 import img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600 from '../assets/1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600.jpg';
 import img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w600 from '../assets/1cS2GDC27NdBXekcWBUkGtRl-48DukFf4_w600.jpg';
 import img_16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w1920_h1080 from '../assets/16WY3VJ2f0osL6oMDfbHsCtaZ9vuRyLTC_w1920-h1080.jpg';
@@ -136,7 +137,7 @@ export default function Home() {
       icon: <HeartPulse size={28} />,
       iconBg: '#eef2ff',
       iconColor: '#4338ca',
-      img: img_1v0nYl9dpIrqaFly6B8PCs0BZSDEYGRBF_w600,
+      img: counselingImg,
       detail: 'Evidence-based psychiatric support for anxiety, depression, sleep disorders, and mood imbalances through careful diagnosis and medical management.',
     },
     {
@@ -227,7 +228,7 @@ export default function Home() {
       {/* HERO */}
       <section id="hero">
         <div className="hero-overlay"></div>
-        <img src={img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1600} alt="REVIVE Clinic interior" className="hero-img" />
+        <img src={heroBgImage} alt="REVIVE Clinic interior" className="hero-img" />
         <div className="hero-layout">
           {/* LEFT: Main content */}
           <div className="hero-content">

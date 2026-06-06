@@ -70,11 +70,11 @@ export default function Aesthetic() {
         <div className="sp-section-label" style={{ marginTop: 0 }}><h2>Our Aesthetic Treatments</h2></div>
         <div className="treatments-grid">
           <TreatmentCard icon={<Smile />} title="Botox &amp; Neuromodulators" desc="Targeted anti-wrinkle injections to soften dynamic expression lines, crow's feet, and forehead wrinkles for a refreshed, youthful appearance." />
-          <TreatmentCard icon={<Syringe />} title="Dermal Fillers" desc="Hyaluronic acid fillers to restore lost volume, contour the jawline, plump lips, and lift the cheeks with immediate, natural-looking results." />
+          <TreatmentCard icon={<Syringe />} title="Skin Boosters" desc="Deep hydrating micro-injections of hyaluronic acid to improve skin elasticity, texture, and luminosity for a natural, radiant glow." />
           <TreatmentCard icon={<Zap />} title="Laser Hair Reduction" desc="Advanced, virtually painless diode and Nd:YAG laser technologies for permanent, safe, and effective hair reduction on all skin types." />
           <TreatmentCard icon={<Droplets />} title="Medi-Facials &amp; Peels" desc="Customized clinical facials (Hydrafacial, Carbon Peels) designed to deep-cleanse, exfoliate, and infuse the skin with powerful hydrating serums." />
-          <TreatmentCard icon={<Target />} title="Skin Tightening (HIFU / RF)" desc="Non-surgical face lifting and skin tightening using high-intensity focused ultrasound and radiofrequency to stimulate deep collagen production." />
-          <TreatmentCard icon={<Feather />} title="Scar &amp; Stretch Mark Revision" desc="Advanced micro-needling (MNRF) and fractional laser resurfacing to dramatically improve the texture and appearance of scars and stretch marks." />
+          <TreatmentCard icon={<Target />} title="Hair Restoration" desc="Advanced therapies including PRP and targeted treatments to stimulate follicles, reduce hair thinning, and promote natural, healthy hair growth." />
+          <TreatmentCard icon={<Feather />} title="Scar &amp; Stretch Mark Revision" desc="Advanced micro-needling with PRP and fractional laser resurfacing to dramatically improve the texture and appearance of scars and stretch marks." />
         </div>
 
         <div className="process-section">
