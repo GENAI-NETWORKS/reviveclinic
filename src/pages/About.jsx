@@ -29,7 +29,7 @@ export default function About() {
       <section className="philosophy-section">
         <div className="philosophy-inner">
           <h2>A New Standard in Care</h2>
-          <p>REVIVE was founded on a simple belief, true healthcare lies in balancing science with practicality and real-life needs. We believe treatment should not just focus on a disease, but on the person as a whole. Every patient's concerns, lifestyle, and well-being matter.</p>
+          <p>At REVIVE, we believe true healthcare bridges the gap between medical science and real-life practicality. Our holistic approach ensures we treat the whole person, not just the condition.</p>
           <p style={{ marginTop: '16px' }}>At REVIVE, we provide evidence-based dermatology and compassionate mental healthcare, with personalized, high-quality care at the center of everything we do.</p>
         </div>
       </section>
