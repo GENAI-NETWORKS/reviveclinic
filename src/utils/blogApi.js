@@ -1,6 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || '/api.php';
 
-// Helper to fetch posts with fallback to localStorage if API is not configured or fails
 export const getBlogPosts = async () => {
   if (API_URL) {
     try {
@@ -9,13 +8,10 @@ export const getBlogPosts = async () => {
         return await response.json();
       }
     } catch (error) {
-      console.error('Failed to fetch from API, falling back to localStorage:', error);
+      console.error('Failed to fetch from API:', error);
     }
   }
-  
-  // Fallback
-  const localPosts = JSON.parse(localStorage.getItem('revive_blog_posts'));
-  return localPosts || [];
+  return [];
 };
 
 export const getBlogPost = async (id) => {
@@ -26,12 +22,10 @@ export const getBlogPost = async (id) => {
         return await response.json();
       }
     } catch (error) {
-      console.error('Failed to fetch post from API, falling back to localStorage:', error);
+      console.error('Failed to fetch post from API:', error);
     }
   }
-  
-  const localPosts = JSON.parse(localStorage.getItem('revive_blog_posts')) || [];
-  return localPosts.find(p => p.id === id);
+  return null;
 };
 
 export const saveBlogPost = async (post) => {

@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
         <div className="footer-cta">
           <h4>Ready to feel better?</h4>
-          <p>Book your consultation today. Closes at 8 PM.</p>
+          <p>Book your consultation today.</p>
           <a href="/#contact" className="btn-primary">Book Now</a>
           <div className="footer-lgbtq">Inclusive &amp; Welcoming Space</div>
         </div>

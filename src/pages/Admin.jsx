@@ -3,41 +3,7 @@ import { Link } from 'react-router-dom';
 import { Sparkles, ExternalLink, LogOut, BookOpen, Brain, Search, PlusCircle, Edit3, Trash2, X, Link2, Upload, Eye } from 'lucide-react';
 import { getBlogPosts, saveBlogPost, deleteBlogPost } from '../utils/blogApi';
 
-const DEFAULT_BLOG_POSTS = [
-  {
-    id: "skincare-routine",
-    title: "5 Essential Steps for a Glowing Summer Skin Routine",
-    excerpt: "Discover the dermatologist-approved daily habits to protect your skin from UV damage while maintaining a natural, healthy glow all summer long.",
-    content: "<p>Content goes here...</p>",
-    category: "Dermatology & Hair Care",
-    author: "Dr. Aditi",
-    date: "May 12, 2026",
-    image: "blog_skin.jpg",
-    readTime: "4 min read"
-  },
-  {
-    id: "hairfall-causes",
-    title: "Understanding the Root Causes of Sudden Hair Fall",
-    excerpt: "Experiencing unusual shedding? We break down the scientific differences between telogen effluvium, alopecia, and stress-induced hair loss.",
-    content: "<p>Content goes here...</p>",
-    category: "Dermatology & Hair Care",
-    author: "Dr. Sharma",
-    date: "May 08, 2026",
-    image: "blog_hair.jpg",
-    readTime: "5 min read"
-  },
-  {
-    id: "journaling-anxiety",
-    title: "The Power of Journaling for Anxiety Management",
-    excerpt: "Learn how setting aside 10 minutes a day for reflective journaling can significantly reduce stress levels and improve your emotional resilience.",
-    content: "<p>Content goes here...</p>",
-    category: "Psychiatry & Counselling",
-    author: "Priya Desai, M.Sc",
-    date: "May 02, 2026",
-    image: "blog_mind.jpg",
-    readTime: "3 min read"
-  }
-];
+
 
 function getCleanImageUrl(inputUrl) {
   if (!inputUrl) return { url: '', type: 'empty' };
@@ -80,8 +46,8 @@ export default function Admin() {
     
     const loadPosts = async () => {
       let fetchedPosts = await getBlogPosts();
-      if (!fetchedPosts || fetchedPosts.length === 0) {
-        fetchedPosts = DEFAULT_BLOG_POSTS;
+      if (!fetchedPosts) {
+        fetchedPosts = [];
       }
       
       let migrated = false;

@@ -44,36 +44,6 @@ const DERMATOLOGY_IMG = img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200;
 const TRICHOLOGY_IMG = img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800;
 const COUNSELLING_IMG = img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000;
 
-const DEFAULT_BLOG_POSTS = [
-  {
-    id: "skincare-routine",
-    title: "5 Essential Steps for a Glowing Summer Skin Routine",
-    excerpt: "Discover the dermatologist-approved daily habits to protect your skin from UV damage while maintaining a natural, healthy glow all summer long.",
-    category: "Skin",
-    author: "Dr. Aditi",
-    date: "May 12, 2026",
-    image: blogSkinImg,
-  },
-  {
-    id: "hairfall-causes",
-    title: "Understanding the Root Causes of Sudden Hair Fall",
-    excerpt: "Experiencing unusual shedding? We break down the scientific differences between telogen effluvium, alopecia, and stress-induced hair loss.",
-    category: "Hair",
-    author: "Dr. Sharma",
-    date: "May 08, 2026",
-    image: blogHairImg,
-  },
-  {
-    id: "journaling-anxiety",
-    title: "The Power of Journaling for Anxiety Management",
-    excerpt: "Learn how setting aside 10 minutes a day for reflective journaling can significantly reduce stress levels and improve your emotional resilience.",
-    category: "Counselling",
-    author: "Priya Desai, M.Sc",
-    date: "May 02, 2026",
-    image: blogMindImg,
-  }
-];
-
 function getCleanImageUrl(inputUrl) {
   if (!inputUrl) return '';
   if (typeof inputUrl !== 'string') return inputUrl;
@@ -102,7 +72,7 @@ function getCleanImageUrl(inputUrl) {
 export default function Home() {
   const [assessment, setAssessment] = useState(null);
   const [formSuccess, setFormSuccess] = useState(false);
-  const [displayPosts, setDisplayPosts] = useState(DEFAULT_BLOG_POSTS);
+  const [displayPosts, setDisplayPosts] = useState([]);
   const [expandedService, setExpandedService] = useState(null);
   const [activeTab, setActiveTab] = useState('skin');
 
@@ -591,8 +561,8 @@ export default function Home() {
               <div className="loc-item">
                 <div className="loc-icon-wrap"><Calendar /></div>
                 <div>
-                  <strong>Business Hours</strong>
-                  <p>Mon - Fri: 9 AM - 8 PM | Sat - Sun: 11 AM - 2 PM<br /><span className="open-now">Open Now · Closes at 8 PM</span></p>
+                  <strong>Working Hours</strong>
+                  <p>Monday to Saturday : 11.30 AM to 2:00 PM, 5.30 PM to 8:00 PM<br />Sundays (only 2nd and 4th Sunday of the month) - 11.30 AM to 2:00 PM</p>
                 </div>
               </div>
             </div>
@@ -666,8 +636,14 @@ export default function Home() {
               </div>
               <div className="hours-panel">
                 <h3>Hours</h3>
-                <div className="hours-row"><span>Mon - Fri</span><span>9 AM - 8 PM</span></div>
-                <div className="hours-row"><span>Sat - Sun</span><span>11 AM - 2 PM</span></div>
+                <div className="hours-row" style={{ alignItems: 'flex-start', marginBottom: '12px' }}>
+                  <span style={{ minWidth: '80px' }}>Mon - Sat</span>
+                  <span style={{ textAlign: 'right', lineHeight: '1.4' }}>11:30 AM - 2:00 PM<br/>5:30 PM - 8:00 PM</span>
+                </div>
+                <div className="hours-row" style={{ alignItems: 'flex-start', marginBottom: '12px' }}>
+                  <span style={{ minWidth: '80px', lineHeight: '1.2' }}>Sundays<br/><small style={{ opacity: 0.8, fontSize: '0.85em', fontWeight: 'normal' }}>(2nd &amp; 4th only)</small></span>
+                  <span style={{ textAlign: 'right' }}>11:30 AM - 2:00 PM</span>
+                </div>
                 <div className="hours-note">Walk-ins welcome. Appointments preferred.</div>
               </div>
               <div className="lgbtq-badge">

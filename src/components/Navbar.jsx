@@ -126,12 +126,12 @@ export default function Navbar() {
                 </Link>
               </div>
             </li>
-            <li><Link to="/#about" onClick={closeMenu}>About</Link></li>
+            <li><a href="/#about" onClick={closeMenu}>About</a></li>
             <li><Link to="/gallery" onClick={closeMenu}>Gallery</Link></li>
-            <li><Link to="/#reviews" onClick={closeMenu}>Reviews</Link></li>
-            <li><Link to="/#blog" onClick={closeMenu}>Blog</Link></li>
-            <li><Link to="/#contact" onClick={closeMenu}>Contact</Link></li>
-            <li><Link to="/#contact" className="nav-cta" onClick={closeMenu}>Book Appointment</Link></li>
+            <li><a href="/#reviews" onClick={closeMenu}>Reviews</a></li>
+            <li><a href="/#blog" onClick={closeMenu}>Blog</a></li>
+            <li><a href="/#contact" onClick={closeMenu}>Contact</a></li>
+            <li><a href="/#contact" className="nav-cta" onClick={closeMenu}>Book Appointment</a></li>
           </ul>
         </div>
       </nav>
