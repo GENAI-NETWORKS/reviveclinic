@@ -31,7 +31,6 @@ export const getBlogPost = async (id) => {
 export const saveBlogPost = async (post) => {
   if (API_URL) {
     try {
-      // Check if it exists to determine POST or PUT
       const exist = await fetch(`${API_URL}?id=${post.id}`);
       let method = 'POST';
       let url = API_URL;
@@ -51,42 +50,25 @@ export const saveBlogPost = async (post) => {
       });
       
       if (response.ok) {
-        // Also save to localStorage as a backup
-        saveToLocalStorage(post);
         return true;
       }
     } catch (error) {
-      console.error('Failed to save to API, saving to localStorage:', error);
+      console.error('Failed to save to API:', error);
     }
   }
-  
-  saveToLocalStorage(post);
-  return true;
+  return false;
 };
 
 export const deleteBlogPost = async (id) => {
   if (API_URL) {
     try {
-      await fetch(`${API_URL}?id=${id}`, { method: 'DELETE' });
+      const response = await fetch(`${API_URL}?id=${id}`, { method: 'DELETE' });
+      if (response.ok) {
+        return true;
+      }
     } catch (error) {
       console.error('Failed to delete from API:', error);
     }
   }
-  
-  const localPosts = JSON.parse(localStorage.getItem('revive_blog_posts')) || [];
-  const newPosts = localPosts.filter(p => p.id !== id);
-  localStorage.setItem('revive_blog_posts', JSON.stringify(newPosts));
-  return true;
-};
-
-// Internal fallback helper
-const saveToLocalStorage = (post) => {
-  let localPosts = JSON.parse(localStorage.getItem('revive_blog_posts')) || [];
-  const idx = localPosts.findIndex(p => p.id === post.id);
-  if (idx !== -1) {
-    localPosts[idx] = post;
-  } else {
-    localPosts.unshift(post);
-  }
-  localStorage.setItem('revive_blog_posts', JSON.stringify(localPosts));
+  return false;
 };
