@@ -290,7 +290,7 @@ export default function Home() {
             </div>
 
             <h2>Salem's Trusted Skin &amp; Mind Clinic</h2>
-            <p style={{ textAlign: 'justify', maxWidth: '700px', margin: '0 auto' }}>REVIVE was founded on a simple belief true healthcare lies in balancing science with practicality and real-life needs. We believe treatment should not just focus on a disease, but on the person as a whole.</p>
+            <p style={{ textAlign: 'justify', maxWidth: '700px', margin: '0 auto' }}>At REVIVE, we believe true healthcare bridges the gap between medical science and real-life practicality. Our holistic approach ensures we treat the whole person, not just the condition.</p>
             <div className="about-values about-values--row">
               <div className="value-item">
                 <div className="value-icon-wrap"><Heart /></div>
