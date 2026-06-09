@@ -29,7 +29,7 @@ export default function About() {
       <section className="philosophy-section">
         <div className="philosophy-inner">
           <h2>A New Standard in Care</h2>
-          <p>REVIVE was founded on a simple belief true healthcare lies in balancing science with practicality and real-life needs. We believe treatment should not just focus on a disease, but on the person as a whole. Every patient's concerns, lifestyle, and well-being matter.</p>
+          <p>REVIVE was founded on a simple belief, true healthcare lies in balancing science with practicality and real-life needs. We believe treatment should not just focus on a disease, but on the person as a whole. Every patient's concerns, lifestyle, and well-being matter.</p>
           <p style={{ marginTop: '16px' }}>At REVIVE, we provide evidence-based dermatology and compassionate mental healthcare, with personalized, high-quality care at the center of everything we do.</p>
         </div>
       </section>
@@ -38,7 +38,7 @@ export default function About() {
         <div className="bento-grid">
           <div className="bento-item bento-text-card bento-wide">
             <h3>Explore Our Spaces</h3>
-            <p>From our welcoming reception to our advanced dermatological procedure rooms and calming psychiatric counseling suites, every corner of REVIVE Clinic is built with your healing journey in mind.</p>
+            <p>From our welcoming reception to our advanced dermatological procedure rooms and calming psychiatric counselling suites, every corner of REVIVE Clinic is built with your healing journey in mind.</p>
           </div>
 
           <div className="bento-item bento-tall">
@@ -54,7 +54,7 @@ export default function About() {
           </div>
 
           <div className="bento-item bento-wide">
-            <img src={img_16DhL2WHmDT6zjsVbnyLkcjG3V9niZqhb_w1000} alt="REVIVE Facility" loading="lazy" />
+            <img src={newGalleryImg} alt="REVIVE Facility" loading="lazy" style={{ objectFit: 'contain', width: '100%', height: '100%' }} />
           </div>
           <div className="bento-item bento-large">
             <img src={img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200} alt="REVIVE Facility" loading="lazy" />
@@ -97,7 +97,7 @@ export default function About() {
             <img src={img_1cS2GDC27NdBXekcWBUkGtRl_48DukFf4_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
           <div className="bento-item bento-large">
-            <img src={newGalleryImg} alt="REVIVE Facility" loading="lazy" style={{ objectFit: 'contain', width: '100%', height: '100%' }} />
+            <img src={img_16DhL2WHmDT6zjsVbnyLkcjG3V9niZqhb_w1000} alt="REVIVE Facility" loading="lazy" />
           </div>
         </div>
       </section>

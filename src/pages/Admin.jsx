@@ -31,7 +31,7 @@ const DEFAULT_BLOG_POSTS = [
     title: "The Power of Journaling for Anxiety Management",
     excerpt: "Learn how setting aside 10 minutes a day for reflective journaling can significantly reduce stress levels and improve your emotional resilience.",
     content: "<p>Content goes here...</p>",
-    category: "Psychiatry & Counseling",
+    category: "Psychiatry & Counselling",
     author: "Priya Desai, M.Sc",
     date: "May 02, 2026",
     image: "blog_mind.jpg",

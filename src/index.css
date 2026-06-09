@@ -1663,8 +1663,8 @@ img {
   background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('./assets/m1.png');
 }
 
-.assess-btn[data-target="counseling"] {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('./assets/counseling.jpg');
+.assess-btn[data-target="counselling"] {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('./assets/counselling.jpg');
 }
 
 .assess-btn[data-target="dermatology"]:hover,
@@ -1682,9 +1682,9 @@ img {
   background-image: linear-gradient(rgba(42, 157, 143, 0.85), rgba(42, 157, 143, 0.85)), url('./assets/m1.png');
 }
 
-.assess-btn[data-target="counseling"]:hover,
-.assess-btn[data-target="counseling"].active {
-  background-image: linear-gradient(rgba(42, 157, 143, 0.85), rgba(42, 157, 143, 0.85)), url('./assets/counseling.jpg');
+.assess-btn[data-target="counselling"]:hover,
+.assess-btn[data-target="counselling"].active {
+  background-image: linear-gradient(rgba(42, 157, 143, 0.85), rgba(42, 157, 143, 0.85)), url('./assets/counselling.jpg');
 }
 
 .assess-btn:hover,
@@ -3405,7 +3405,7 @@ img {
 }
 
 .psychiatry-theme .sp-hero::before {
-  background: url('./assets/counseling.jpg') center/cover no-repeat;
+  background: url('./assets/counselling.jpg') center/cover no-repeat;
   opacity: 0.18;
 }
 

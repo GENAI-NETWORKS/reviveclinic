@@ -70,7 +70,7 @@ const DEFAULT_BLOG_POSTS = [
       <h2>Shifting the Focus</h2>
       <p>Journaling doesn't just have to be about negative emotions. Incorporating a gratitude practice-writing down three things you are thankful for each day-can physically rewire your brain to scan for positive experiences, gradually shifting your baseline away from anxiety.</p>
     `,
-    category: "Psychiatry & Counseling",
+    category: "Psychiatry & Counselling",
     author: "Priya Desai, M.Sc",
     date: "May 02, 2026",
     image: "blog_mind.jpg",

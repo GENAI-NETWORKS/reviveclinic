@@ -10,12 +10,17 @@ import sivaImg from '../assets/sivakumar.jpeg';
 import yogeswariImg from '../assets/Yogeswari Subramanian.jpeg';
 import dermatologyImg from '../assets/dermatology.jpg';
 import trichologyImg from '../assets/trichology.jpg';
-import counselingImg from '../assets/counseling.jpg';
+import counsellingImg from '../assets/counselling.jpg';
 import blogSkinImg from '../assets/blog_skin.jpg';
 import blogHairImg from '../assets/blog_hair.jpg';
 import blogMindImg from '../assets/blog_mind.jpg';
 import assessmentBgImg from '../assets/assessment-bg.jpg';
 import heroBgImage from '../assets/image.png';
+
+import skinServiceImg from '../assets/skin.png';
+import hairServiceImg from '../assets/hair.png';
+import psychiatryServiceImg from '../assets/Psychiatry.png';
+import counsellingServiceImg from '../assets/psychological-counseling.jpeg';
 
 import img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200 from '../assets/1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200.jpg';
 import img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800 from '../assets/1N5cm-vugS-Y6fIlk9gSOZdirTBzx_KFD_w800.jpg';
@@ -37,7 +42,7 @@ import assessmentNewBg from '../assets/IMG20251027192429~2.jpg.jpeg';
 const ASSESSMENT_BG = assessmentNewBg;
 const DERMATOLOGY_IMG = img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w1200;
 const TRICHOLOGY_IMG = img_1N5cm_vugS_Y6fIlk9gSOZdirTBzx_KFD_w800;
-const COUNSELING_IMG = img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000;
+const COUNSELLING_IMG = img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w1000;
 
 const DEFAULT_BLOG_POSTS = [
   {
@@ -62,7 +67,7 @@ const DEFAULT_BLOG_POSTS = [
     id: "journaling-anxiety",
     title: "The Power of Journaling for Anxiety Management",
     excerpt: "Learn how setting aside 10 minutes a day for reflective journaling can significantly reduce stress levels and improve your emotional resilience.",
-    category: "Counseling",
+    category: "Counselling",
     author: "Priya Desai, M.Sc",
     date: "May 02, 2026",
     image: blogMindImg,
@@ -96,7 +101,6 @@ function getCleanImageUrl(inputUrl) {
 
 export default function Home() {
   const [assessment, setAssessment] = useState(null);
-  const [showExperts, setShowExperts] = useState(false);
   const [formSuccess, setFormSuccess] = useState(false);
   const [displayPosts, setDisplayPosts] = useState(DEFAULT_BLOG_POSTS);
   const [expandedService, setExpandedService] = useState(null);
@@ -117,7 +121,7 @@ export default function Home() {
       icon: <Sparkles size={28} />,
       iconBg: '#e6f6f4',
       iconColor: '#2a9d8f',
-      img: img_1yOkU9D2peT8EsPqowkU6ntBTbY8rw5ja_w600,
+      img: skinServiceImg,
       detail: 'Comprehensive medical and aesthetic dermatology services, including treatments for acne, pigmentation, allergies, and advanced chemical peels for a flawless complexion.',
     },
     {
@@ -127,7 +131,7 @@ export default function Home() {
       icon: <Feather size={28} />,
       iconBg: '#fef3e2',
       iconColor: '#c2700f',
-      img: img_1J1Vm1TuVls0uoR91UOEuobovS11_NRgi_w600,
+      img: hairServiceImg,
       detail: 'Advanced scalp analysis and targeted therapies like PRP to identify the root cause of hair fall and stimulate healthy hair regrowth.',
     },
     {
@@ -137,7 +141,7 @@ export default function Home() {
       icon: <HeartPulse size={28} />,
       iconBg: '#eef2ff',
       iconColor: '#4338ca',
-      img: counselingImg,
+      img: psychiatryServiceImg,
       detail: 'Evidence-based psychiatric support for anxiety, depression, sleep disorders, and mood imbalances through careful diagnosis and medical management.',
     },
     {
@@ -147,7 +151,7 @@ export default function Home() {
       icon: <MessageCircle size={28} />,
       iconBg: '#f0fdf4',
       iconColor: '#166534',
-      img: img_1AG2mEOtX8tAo81E93IfvQYDdV9qbOYPo_w600,
+      img: counsellingServiceImg,
       detail: 'Compassionate, one-on-one talk therapy and structured sessions for individuals, couples, and families navigating stress, grief, and life transitions.',
     },
   ];
@@ -159,7 +163,6 @@ export default function Home() {
     'Psychiatric': { bg: '#eef2ff', color: '#4338ca' },
     'Psychiatry': { bg: '#eef2ff', color: '#4338ca' },
     'Counselling': { bg: '#f0fdf4', color: '#166534' },
-    'Counseling': { bg: '#f0fdf4', color: '#166534' },
     'Dermatology': { bg: '#e6f6f4', color: 'var(--primary)' },
     'Hair Care': { bg: '#fef3e2', color: '#c2700f' },
   };
@@ -234,7 +237,7 @@ export default function Home() {
           <div className="hero-content">
             <div className="hero-badge">4.9 Stars · Trusted by 1100+ patients</div>
             <h1 className="hero-tagline">Revive Your Radiance &amp; Peace</h1>
-            <p className="hero-sub">Expert Dermatology &amp; Hair Care · Psychiatry &amp; Counseling<br />Salem's most trusted skin &amp; mind clinic.</p>
+            <p className="hero-sub">Expert Dermatology &amp; Hair Care · Psychiatry &amp; Counselling<br />Salem's most trusted skin &amp; mind clinic.</p>
             <div className="hero-actions">
               <Link to="/service-dermatology" className="btn-ghost">Consult for Skin &amp; Hair</Link>
               <Link to="/service-psychiatry" className="btn-ghost">Consult for Mind</Link>
@@ -282,6 +285,70 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* ABOUT */}
+      <section id="about" className="section about-section">
+        <div className="container about-centered">
+          <div className="about-text about-text--center">
+            <p className="section-eyebrow">About Us</p>
+
+            {/* Meet Our Experts Panel */}
+            <div style={{ width: '100%', maxWidth: '1000px', margin: '0 auto 40px' }}>
+              <h3 style={{ fontFamily: 'var(--font-head)', fontSize: '2rem', color: 'var(--bg-dark)', marginBottom: '24px' }}>Meet Our Experts</h3>
+              <div className="about-experts-direct" style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center' }}>
+                <div className="expert-card" style={{ flex: '1 1 340px', background: '#fff', borderRadius: '16px', boxShadow: '0 8px 32px rgba(0,0,0,0.06)', borderBottom: 'none' }}>
+                  <div className="expert-img-wrap">
+                    <img src={yogeswariImg} alt="Dr. Yogeswari Subramanian" />
+                  </div>
+                  <div className="expert-info" style={{ textAlign: 'left' }}>
+                    <h4>Dr. Yogeswari Subramanian</h4>
+                    <span className="expert-qual">MBBS, MD, DNB – DVL</span>
+                    <span className="expert-role skin-role">Dermatologist & Aesthetic Specialist</span>
+                  </div>
+                </div>
+                <div className="expert-card" style={{ flex: '1 1 340px', background: '#fff', borderRadius: '16px', boxShadow: '0 8px 32px rgba(0,0,0,0.06)', borderBottom: 'none' }}>
+                  <div className="expert-img-wrap">
+                    <img src={sivaImg} alt="Dr. P.T. Sivakumar" />
+                  </div>
+                  <div className="expert-info" style={{ textAlign: 'left' }}>
+                    <h4>Dr. P.T. Sivakumar</h4>
+                    <span className="expert-qual">MBBS, MD – CMC Vellore</span>
+                    <span className="expert-role mind-role">Consultant Psychiatrist</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2>Salem's Trusted Skin &amp; Mind Clinic</h2>
+            <p style={{ textAlign: 'justify', maxWidth: '700px', margin: '0 auto' }}>REVIVE was founded on a simple belief true healthcare lies in balancing science with practicality and real-life needs. We believe treatment should not just focus on a disease, but on the person as a whole.</p>
+            <div className="about-values about-values--row">
+              <div className="value-item">
+                <div className="value-icon-wrap"><Heart /></div>
+                <div>
+                  <h4>Inclusive &amp; Safe</h4>
+                  <p>All identities welcomed and respected.</p>
+                </div>
+              </div>
+              <div className="value-item">
+                <div className="value-icon-wrap"><Microscope /></div>
+                <div>
+                  <h4>Evidence-Based</h4>
+                  <p>Treatments grounded in the latest clinical research.</p>
+                </div>
+              </div>
+              <div className="value-item">
+                <div className="value-icon-wrap"><ShieldCheck /></div>
+                <div>
+                  <h4>Confidential</h4>
+                  <p>Your privacy is our top priority, always.</p>
+                </div>
+              </div>
+            </div>
+
+            <Link to="/about" className="btn-primary" style={{ marginTop: '24px', display: 'inline-block' }}>Explore Now</Link>
+          </div>
+        </div>
+      </section>
 
       {/* SERVICES */}
       <section id="services" className="section">
@@ -344,78 +411,6 @@ export default function Home() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="section about-section">
-        <div className="container about-centered">
-          <div className="about-text about-text--center">
-            <p className="section-eyebrow">About Us</p>
-
-            {/* Meet Our Experts Button — above heading */}
-            <div className="about-experts-panel">
-              <button
-                className={`meet-experts-btn ${showExperts ? 'open' : ''}`}
-                onClick={() => setShowExperts(v => !v)}
-              >
-                <Users size={20} />
-                <span>Meet Our Experts</span>
-                <ChevronDown size={18} className={`meb-chevron ${showExperts ? 'rotated' : ''}`} />
-              </button>
-
-              <div className={`experts-dropdown ${showExperts ? 'visible' : ''}`}>
-                <div className="expert-card">
-                  <div className="expert-img-wrap">
-                    <img src={yogeswariImg} alt="Dr. Yogeswari Subramanian" />
-                  </div>
-                  <div className="expert-info">
-                    <h4>Dr. Yogeswari Subramanian</h4>
-                    <span className="expert-qual">MBBS, MD, DNB – DVL</span>
-                    <span className="expert-role skin-role">Dermatologist &amp; Aesthetic Specialist</span>
-                  </div>
-                </div>
-                <div className="expert-card">
-                  <div className="expert-img-wrap">
-                    <img src={sivaImg} alt="Dr. P.T. Sivakumar" />
-                  </div>
-                  <div className="expert-info">
-                    <h4>Dr. P.T. Sivakumar</h4>
-                    <span className="expert-qual">MBBS, MD – CMC Vellore</span>
-                    <span className="expert-role mind-role">Consultant Psychiatrist</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <h2>Salem's Trusted Skin &amp; Mind Clinic</h2>
-            <p style={{ textAlign: 'justify', maxWidth: '700px', margin: '0 auto' }}>REVIVE was founded on a simple belief true healthcare lies in balancing science with practicality and real-life needs. We believe treatment should not just focus on a disease, but on the person as a whole.</p>
-            <div className="about-values about-values--row">
-              <div className="value-item">
-                <div className="value-icon-wrap"><Heart /></div>
-                <div>
-                  <h4>Inclusive &amp; Safe</h4>
-                  <p>All identities welcomed and respected.</p>
-                </div>
-              </div>
-              <div className="value-item">
-                <div className="value-icon-wrap"><Microscope /></div>
-                <div>
-                  <h4>Evidence-Based</h4>
-                  <p>Treatments grounded in the latest clinical research.</p>
-                </div>
-              </div>
-              <div className="value-item">
-                <div className="value-icon-wrap"><ShieldCheck /></div>
-                <div>
-                  <h4>Confidential</h4>
-                  <p>Your privacy is our top priority, always.</p>
-                </div>
-              </div>
-            </div>
-
-            <Link to="/about" className="btn-primary" style={{ marginTop: '24px', display: 'inline-block' }}>Explore Now</Link>
           </div>
         </div>
       </section>
@@ -492,12 +487,12 @@ export default function Home() {
                 <button className={`assess-btn ${assessment === 'dermatology' ? 'active' : ''}`} data-target="dermatology" onClick={() => handleAssessmentClick('dermatology')}>Skin</button>
                 <button className={`assess-btn ${assessment === 'trichology' ? 'active' : ''}`} data-target="trichology" onClick={() => handleAssessmentClick('trichology')}>Hair</button>
                 <button className={`assess-btn ${assessment === 'psychiatry' ? 'active' : ''}`} data-target="psychiatry" onClick={() => handleAssessmentClick('psychiatry')}>Psychiatric</button>
-                <button className={`assess-btn ${assessment === 'counseling' ? 'active' : ''}`} data-target="counseling" onClick={() => handleAssessmentClick('counseling')}>Counseling</button>
+                <button className={`assess-btn ${assessment === 'counselling' ? 'active' : ''}`} data-target="counselling" onClick={() => handleAssessmentClick('counselling')}>Counselling</button>
               </div>
             </div>
             <div
               className={`assessment-result ${assessment ? 'has-bg' : ''}`}
-              style={{ backgroundImage: assessment === 'dermatology' ? `url(${DERMATOLOGY_IMG})` : assessment === 'trichology' ? `url(${TRICHOLOGY_IMG})` : (assessment === 'psychiatry' || assessment === 'counseling') ? `url(${COUNSELING_IMG})` : 'none' }}
+              style={{ backgroundImage: assessment === 'dermatology' ? `url(${DERMATOLOGY_IMG})` : assessment === 'trichology' ? `url(${TRICHOLOGY_IMG})` : (assessment === 'psychiatry' || assessment === 'counselling') ? `url(${COUNSELLING_IMG})` : 'none' }}
             >
               {!assessment && (
                 <div className="result-placeholder">
@@ -529,11 +524,11 @@ export default function Home() {
                   <a href="#contact" className="btn-primary">Book a Consultation</a>
                 </div>
               )}
-              {assessment === 'counseling' && (
+              {assessment === 'counselling' && (
                 <div className="result-card">
                   <Heart style={{ color: 'var(--teal-light)', width: '48px', height: '48px', margin: '0 auto 16px', display: 'block' }} />
-                  <h4>Counseling</h4>
-                  <p>Connect with experienced counselors to navigate stress, anxiety, and relationship challenges through compassionate talk therapy.</p>
+                  <h4>Counselling</h4>
+                  <p>Connect with experienced counsellors to navigate stress, anxiety, and relationship challenges through compassionate talk therapy.</p>
                   <a href="#contact" className="btn-primary">Book a Consultation</a>
                 </div>
               )}
@@ -638,7 +633,7 @@ export default function Home() {
                 <select id="service" name="service" required defaultValue="">
                   <option value="" disabled>Select a service</option>
                   <option value="dermatology">Dermatology &amp; Hair Care</option>
-                  <option value="psychiatry">Psychiatry / Counseling (Mind)</option>
+                  <option value="psychiatry">Psychiatry / Counselling (Mind)</option>
                   <option value="general">General Enquiry</option>
                 </select>
               </div>

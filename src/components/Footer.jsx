@@ -20,7 +20,7 @@ export default function Footer() {
           <ul>
             <li><Link to="/service-dermatology">Dermatology &amp; Hair Care</Link></li>
             <li><Link to="/service-aesthetic">Aesthetic &amp; Cosmetology</Link></li>
-            <li><Link to="/service-psychiatry">Psychiatry &amp; Counseling</Link></li>
+            <li><Link to="/service-psychiatry">Psychiatry &amp; Counselling</Link></li>
           </ul>
         </div>
         <div className="footer-links">

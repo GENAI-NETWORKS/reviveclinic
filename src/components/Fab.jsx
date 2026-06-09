@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Phone, MapPin, Calendar, HelpCircle, X } from 'lucide-react';
+import { Phone, MapPin, Calendar, ArrowUp, X } from 'lucide-react';
 
 export default function Fab() {
   const [active, setActive] = useState(false);
@@ -31,10 +31,10 @@ export default function Fab() {
       <button 
         className={`fab-main ${active ? 'active' : ''}`} 
         id="fabMain" 
-        aria-label="Help"
+        aria-label="Contact Us"
         onClick={(e) => { e.stopPropagation(); setActive(!active); }}
       >
-        <HelpCircle className="fab-icon-open" />
+        <ArrowUp className="fab-icon-open" />
         <X className="fab-icon-close" />
       </button>
     </div>
